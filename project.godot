@@ -10,10 +10,28 @@ config_version=5
 
 [application]
 
-config/name="HatsuneMikuGaySex"
-config/features=PackedStringArray("4.2", "Mobile")
-config/icon="res://icon.svg"
+config/name="project"
+run/main_scene="res://.mono/metadata/combat.tscn"
+config/features=PackedStringArray("4.2")
+config/icon="res://icon.png"
+
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+
+[gui]
+
+common/drop_mouse_on_gui_input_disabled=true
+
+[mono]
+
+project/assembly_name="project"
+
+[physics]
+
+common/enable_pause_aware_picking=true
 
 [rendering]
 
-renderer/rendering_method="mobile"
+environment/defaults/default_environment="res://default_env.tres"

@@ -1,5 +1,4 @@
 class_name Enemy extends Stats
-var rng =RandomNumberGenerator.new()
 
 @export var _Message : String
 @export var _Heal : bool
@@ -21,11 +20,3 @@ func Attack():
 func Sp():
 	var dam = rng.randi_range(2*(_Damage-10),2*(_Damage+10))
 	return dam
-
-func Heal():
-	var Gain:int = rng.randi_range(10,Max_Health/6)
-	if Gain + _Stats_Health >= Max_Health:
-		_Stats_Health = Max_Health
-	else:
-		_Stats_Health += Gain
-		

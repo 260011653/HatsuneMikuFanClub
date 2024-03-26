@@ -1,5 +1,4 @@
 class_name Player extends Stats
-var rng =RandomNumberGenerator.new()
 
 @export var _Player_Mana : int = Max_Mana
 
@@ -35,3 +34,4 @@ func Heal():
 			_Stats_Health = Max_Health
 		else:
 			_Stats_Health += Health
+

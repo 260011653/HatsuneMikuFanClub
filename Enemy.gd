@@ -6,8 +6,8 @@ var _Damage : int
 
 
 func _init(name,health,unimes,damage,heal):
-	_Stats_Name = name
-	_Stats_Health = health
+	Stats_Name = name
+	Stats_Health = health
 	Max_Health = health
 	_Message = unimes
 	_Damage = damage

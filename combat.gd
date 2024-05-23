@@ -19,60 +19,20 @@ func _ready():
 		3:
 			Foe = Enem.new("Rogue Computer", 160,"Rogue Computer sends phishing email",70,false)
 			$Printer.show()
-		4:
-			Foe = Enem.new("Printer",500,"Printer jams",10,true)
-			$Computer.show()
-	while true:
-		$PlayerDisplay.text = "HEALTH: "+str(Player_Health)+"\nMANA: "+str(Player_Mana)
-		if Student.Dead():
-			get_tree().change_scene("res://game_over.tscn")
-		if Foe.Dead():
-			get_tree().change_scene("res://win.tscn")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
-
-func _on_attack_button_down():
-	$Attack.hide()
-	$Magic.hide()
-	var damage = Student.Attack()
-	Foe.Damage(damage)
-	EnemAttack()
+func _process(delta):
+	$PlayerDisplay.text = "HEALTH: "+str(Player_Health)+"\nMANA: "+str(Player_Mana)
+	if Student.Dead():
+		get_tree().change_scene("res://game_over.tscn")
+	if Foe.Dead():
+		get_tree().change_scene("res://win.tscn")
 
 
-func _on_magic_button_down():
-	$Magic.hide()
-	$Attack.hide()
-	$Heal.show()
-	$Sp1.show()
-	$Sp2.show()
-	EnemAttack()
 
 
-func _on_heal_button_down():
-	$Heal.hide()
-	$Sp1.hide()
-	$Sp2.hide()
-	Student.Heal()
-	EnemAttack()
 
-func _on_sp_1_button_down():
-	$Heal.hide()
-	$Sp1.hide()
-	$Sp2.hide()
-	var damage = Student.Sp1()
-	Foe.Damage(damage)
-	EnemAttack()
-
-func _on_sp_2_button_down():
-	$Heal.hide()
-	$Sp1.hide()
-	$Sp2.hide()
-	var damage = Student.Sp2()
-	Foe.Damage(damage)
-	EnemAttack()
 
 func EnemAttack():
 	var Move = randi_range(1,2)
@@ -87,3 +47,46 @@ func EnemAttack():
 			Student.Damage(damage)
 		3:
 			Foe.Heal()
+
+
+func _on_attack_pressed():
+	$Attack.hide()
+	$Magic.hide()
+	var damage = Student.Attack()
+	Foe.Damage(damage)
+	EnemAttack()
+
+
+func _on_magic_pressed():
+	$Magic.hide()
+	$Attack.hide()
+	$Heal.show()
+	$Sp1.show()
+	$Sp2.show()
+
+
+
+func _on_heal_pressed():
+	$Heal.hide()
+	$Sp1.hide()
+	$Sp2.hide()
+	Student.Heal()
+	EnemAttack()
+
+
+func _on_sp_1_pressed():
+	$Heal.hide()
+	$Sp1.hide()
+	$Sp2.hide()
+	var damage = Student.Sp1()
+	Foe.Damage(damage)
+	EnemAttack()
+
+
+func _on_sp_2_pressed():
+	$Heal.hide()
+	$Sp1.hide()
+	$Sp2.hide()
+	var damage = Student.Sp2()
+	Foe.Damage(damage)
+	EnemAttack()

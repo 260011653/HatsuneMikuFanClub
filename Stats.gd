@@ -1,31 +1,32 @@
 class_name Stats extends Node2D
 var rng =RandomNumberGenerator.new()
 
-@export var _Stats_Health : int
-@export var _Stats_Name : String
+@export var Stats_Health : int
+@export var Stats_Name : String
 
 var dead: bool = false
 var Max_Health : int
 
 #initialise
-func _init(name,health):
-	_Stats_Name = name
-	_Stats_Health = health
+@warning_ignore("shadowed_variable_base_class")
+func _init(p_name,health):
+	Stats_Name = p_name
+	Stats_Health = health
 	Max_Health = health
 
 func Dead(): #returns true if dead
-	if _Stats_Health <= 0:
+	if Stats_Health <= 0:
 		return true
 	else:
 		return false
 
 func Damage(damage):
-	_Stats_Health -= damage
+	Stats_Health -= damage
 
 func Heal():
+	@warning_ignore("integer_division")
 	var Gain:int = rng.randi_range(10,Max_Health/6)
-	if Gain + _Stats_Health >= Max_Health:
-		_Stats_Health = Max_Health
+	if Gain + Stats_Health >= Max_Health:
+		Stats_Health = Max_Health
 	else:
-		_Stats_Health += Gain
-		
+		Stats_Health += Gain

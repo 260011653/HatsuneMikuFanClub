@@ -1,14 +1,14 @@
 class_name Player extends Stats
 
-@export var _Player_Mana : int = Max_Mana
+@export var Player_Mana : int = Max_Mana
 
 var Max_Mana : int
 #initialise
 func _init(mana,health,name):
-	_Player_Mana = mana
+	Player_Mana = mana
 	Max_Mana = mana
-	_Stats_Name = name
-	_Stats_Health = health
+	Stats_Name = name
+	Stats_Health = health
 	Max_Health = health
 	
 func Attack():
@@ -16,22 +16,23 @@ func Attack():
 	return Damage
 
 func Sp1():
-	if _Player_Mana >= 5:
+	if Player_Mana >= 5:
 		var Damage :int = randi_range(60,90)
-		_Player_Mana -= 5
+		Player_Mana -= 5
 		return Damage
 
 func Sp2():
-	if _Player_Mana >= 10:
+	if Player_Mana >= 10:
 		var Damage : int= randi_range(100,140)
-		_Player_Mana -= 5
+		Player_Mana -= 5
 		return Damage
 
 func Heal():
-	if _Player_Mana >= 5:
+	if Player_Mana >= 5:
 		var Health : int = randi_range(20,50)
-		if _Stats_Health + Health >=Max_Health:
-			_Stats_Health = Max_Health
+		Player_Mana -= 5
+		if Stats_Health + Health >=Max_Health:
+			Stats_Health = Max_Health
 		else:
-			_Stats_Health += Health
+			Stats_Health += Health
 

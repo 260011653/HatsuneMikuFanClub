@@ -1,16 +1,16 @@
 [gd_scene load_steps=9 format=3 uid="uid://bh87k8845grhg"]
 
-[ext_resource type="Texture2D" uid="uid://dn0kg7pour2nt" path="res://button_att.png" id="1_ol8me"]
-[ext_resource type="Script" path="res://combat.gd" id="1_v2kba"]
-[ext_resource type="Texture2D" uid="uid://bp00625gpgq8a" path="res://button_mag.png" id="2_i6ppy"]
-[ext_resource type="Texture2D" uid="uid://qm30p4vxdxbn" path="res://placeholder_student_battleicon.png" id="3_4i2vc"]
-[ext_resource type="Texture2D" uid="uid://bevfmmcra5nck" path="res://button_hea.png" id="4_61ae1"]
-[ext_resource type="Texture2D" uid="uid://cshtwn0i421i7" path="res://placeholder_student_potrait.png" id="4_ryet2"]
-[ext_resource type="Texture2D" uid="uid://bqcm8ibb1iyi0" path="res://button_run.png" id="5_b1eut"]
-[ext_resource type="FontFile" uid="uid://yx8eo66u0ce3" path="res://pixel-comic-sans-undertale-sans-font.ttf" id="5_k8htg"]
+[ext_resource type="Script" path="res://Scripts/combat.gd" id="1_oeykr"]
+[ext_resource type="Texture2D" uid="uid://dn0kg7pour2nt" path="res://Art/button_att.png" id="2_jph7b"]
+[ext_resource type="Texture2D" uid="uid://bp00625gpgq8a" path="res://Art/button_mag.png" id="3_hyr67"]
+[ext_resource type="Texture2D" uid="uid://bevfmmcra5nck" path="res://Art/button_hea.png" id="4_q7ylt"]
+[ext_resource type="Texture2D" uid="uid://bqcm8ibb1iyi0" path="res://Art/button_run.png" id="5_gmvxc"]
+[ext_resource type="Texture2D" uid="uid://qm30p4vxdxbn" path="res://Art/placeholder_student_battleicon.png" id="6_mthoe"]
+[ext_resource type="Texture2D" uid="uid://cshtwn0i421i7" path="res://Art/placeholder_student_potrait.png" id="7_no0up"]
+[ext_resource type="FontFile" uid="uid://yx8eo66u0ce3" path="res://pixel-comic-sans-undertale-sans-font.ttf" id="8_m3717"]
 
 [node name="Node" type="Node"]
-script = ExtResource("1_v2kba")
+script = ExtResource("1_oeykr")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchors_preset = 15
@@ -28,7 +28,7 @@ offset_left = 755.0
 offset_top = 578.0
 offset_right = 1212.0
 offset_bottom = 776.0
-texture_normal = ExtResource("1_ol8me")
+texture_normal = ExtResource("2_jph7b")
 stretch_mode = 5
 
 [node name="Magic" type="TextureButton" parent="."]
@@ -36,7 +36,7 @@ offset_left = 778.0
 offset_top = 776.0
 offset_right = 1189.0
 offset_bottom = 974.0
-texture_normal = ExtResource("2_i6ppy")
+texture_normal = ExtResource("3_hyr67")
 stretch_mode = 5
 
 [node name="Heal" type="TextureButton" parent="."]
@@ -45,7 +45,7 @@ offset_left = 931.0
 offset_top = 783.0
 offset_right = 1330.0
 offset_bottom = 985.0
-texture_normal = ExtResource("4_61ae1")
+texture_normal = ExtResource("4_q7ylt")
 stretch_mode = 4
 
 [node name="Sp1" type="TextureButton" parent="."]
@@ -54,7 +54,7 @@ offset_left = 1323.0
 offset_top = 783.0
 offset_right = 1750.0
 offset_bottom = 982.0
-texture_normal = ExtResource("5_b1eut")
+texture_normal = ExtResource("5_gmvxc")
 stretch_mode = 4
 
 [node name="Sp2" type="TextureButton" parent="."]
@@ -63,7 +63,7 @@ offset_left = 536.0
 offset_top = 783.0
 offset_right = 946.0
 offset_bottom = 982.0
-texture_normal = ExtResource("5_b1eut")
+texture_normal = ExtResource("5_gmvxc")
 stretch_mode = 4
 
 [node name="JohnACG" type="TextureRect" parent="."]
@@ -71,39 +71,49 @@ offset_left = 2.0
 offset_top = 507.0
 offset_right = 537.0
 offset_bottom = 1084.0
-texture = ExtResource("3_4i2vc")
+texture = ExtResource("6_mthoe")
 
 [node name="Student" type="TextureRect" parent="."]
 visible = false
 offset_left = 763.0
-offset_top = 73.0
+offset_top = 108.0
 offset_right = 1194.0
-offset_bottom = 518.0
-texture = ExtResource("4_ryet2")
+offset_bottom = 553.0
+texture = ExtResource("7_no0up")
 
 [node name="Teacher" type="TextureRect" parent="."]
 visible = false
 offset_left = 763.0
-offset_top = 73.0
+offset_top = 103.0
 offset_right = 1194.0
-offset_bottom = 518.0
-texture = ExtResource("4_ryet2")
+offset_bottom = 548.0
+texture = ExtResource("7_no0up")
 
 [node name="Printer" type="TextureRect" parent="."]
 visible = false
 offset_left = 763.0
-offset_top = 73.0
+offset_top = 107.0
 offset_right = 1194.0
-offset_bottom = 518.0
-texture = ExtResource("4_ryet2")
+offset_bottom = 552.0
+texture = ExtResource("7_no0up")
 
 [node name="Computer" type="TextureRect" parent="."]
 visible = false
 offset_left = 763.0
-offset_top = 73.0
+offset_top = 105.0
 offset_right = 1194.0
-offset_bottom = 518.0
-texture = ExtResource("4_ryet2")
+offset_bottom = 550.0
+texture = ExtResource("7_no0up")
+
+[node name="EnemyDisplay" type="Label" parent="."]
+offset_left = 798.0
+offset_top = 26.0
+offset_right = 1206.0
+offset_bottom = 101.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("8_m3717")
+theme_override_font_sizes/font_size = 76
+text = "Wuhoh"
 
 [node name="PlayerDisplay" type="Label" parent="."]
 offset_left = 8.0
@@ -111,7 +121,7 @@ offset_top = 371.0
 offset_right = 521.0
 offset_bottom = 507.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("5_k8htg")
+theme_override_fonts/font = ExtResource("8_m3717")
 theme_override_font_sizes/font_size = 60
 text = "YOU FUCKED UP"
 

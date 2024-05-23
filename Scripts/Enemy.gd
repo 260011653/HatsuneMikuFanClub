@@ -20,3 +20,4 @@ func Attack():
 func Sp():
 	var dam = rng.randi_range(2*(_Damage-10),2*(_Damage+10))
 	return dam
+

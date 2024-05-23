@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bqcm8ibb1iyi0"
-path="res://.godot/imported/button_run.png-006b5074820c989a1c241a84ec29ec7e.ctex"
+uid="uid://cshtwn0i421i7"
+path="res://.godot/imported/placeholder_student_potrait.png-b9424cc2a9f306723746a3d1a8349b70.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://button_run.png"
-dest_files=["res://.godot/imported/button_run.png-006b5074820c989a1c241a84ec29ec7e.ctex"]
+source_file="res://Art/placeholder_student_potrait.png"
+dest_files=["res://.godot/imported/placeholder_student_potrait.png-b9424cc2a9f306723746a3d1a8349b70.ctex"]
 
 [params]
 

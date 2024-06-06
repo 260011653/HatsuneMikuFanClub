@@ -1,3 +1,18 @@
-[gd_scene format=3 uid="uid://dm1whcmguc47w"]
+[gd_scene load_steps=2 format=3 uid="uid://dm1whcmguc47w"]
+
+[ext_resource type="FontFile" uid="uid://yx8eo66u0ce3" path="res://pixel-comic-sans-undertale-sans-font.ttf" id="1_qqm15"]
 
 [node name="GameOver" type="Node"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[node name="TextEdit" type="TextEdit" parent="."]
+offset_left = 654.0
+offset_top = 435.0
+offset_right = 1223.0
+offset_bottom = 587.0
+theme_override_fonts/font = ExtResource("1_qqm15")
+theme_override_font_sizes/font_size = 100
+text = "Game Over"

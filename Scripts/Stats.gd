@@ -1,8 +1,8 @@
 class_name Stats extends Node2D
 var rng =RandomNumberGenerator.new()
 
-@export var Stats_Health : int
-@export var Stats_Name : String
+var Stats_Health : int
+var Stats_Name : String
 
 var dead: bool = false
 var Max_Health : int

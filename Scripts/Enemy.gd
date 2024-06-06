@@ -21,3 +21,13 @@ func Sp():
 	var dam = rng.randi_range(2*(_Damage-10),2*(_Damage+10))
 	return dam
 
+func Get_Health():
+	return Stats_Health
+func Get_Name():
+	return Stats_Name
+func Get_Max_Health():
+	return Max_Health
+func Get_Heal():
+	return _Heal
+func Get_Message():
+	return _Message

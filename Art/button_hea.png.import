@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://qm30p4vxdxbn"
-path="res://.godot/imported/placeholder_student_battleicon.png-e1e80258b94272b134c2a4751ed11ede.ctex"
+uid="uid://bevfmmcra5nck"
+path="res://.godot/imported/button_hea.png-a2556b90b6b4e52ff5850eba4efba381.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://placeholder_student_battleicon.png"
-dest_files=["res://.godot/imported/placeholder_student_battleicon.png-e1e80258b94272b134c2a4751ed11ede.ctex"]
+source_file="res://Art/button_hea.png"
+dest_files=["res://.godot/imported/button_hea.png-a2556b90b6b4e52ff5850eba4efba381.ctex"]
 
 [params]
 

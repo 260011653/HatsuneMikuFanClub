@@ -1,9 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://bfw0edgq52w7o"]
-
-[ext_resource type="Script" path="res://.mono/metadata/combat.gd" id="1"]
-[ext_resource type="PackedScene" uid="uid://bh87k8845grhg" path="res://combat.tscn" id="2_cp22o"]
-
-[node name="combat" type="Node"]
-script = ExtResource("1")
-
-[node name="Node" parent="." instance=ExtResource("2_cp22o")]

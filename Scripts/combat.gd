@@ -1,6 +1,6 @@
 extends Node
 var rng =RandomNumberGenerator.new() #random number generator
-var Student = Player.new(40,200,"John")
+#var Student = Player.new(40,200,"John")
 # Called when the node enters the scene tree for the first time.
 const Enem := preload("res://Scripts/Enemy.gd")
 var Foe = Enem.new("Student",100,"Student throws textbook at you",20,false)

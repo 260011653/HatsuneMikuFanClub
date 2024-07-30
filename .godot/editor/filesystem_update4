@@ -1,3 +1,4 @@
-res://world.tscn
 res://Scenes/player.tscn
 res://Scripts/player.gd
+res://Scenes/playermovement.gd
+res://Scenes/world.tscn

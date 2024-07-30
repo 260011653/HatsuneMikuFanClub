@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bh87k8845grhg"]
+[gd_scene load_steps=8 format=3 uid="uid://bh87k8845grhg"]
 
 [ext_resource type="Script" path="res://Scripts/combat.gd" id="1_oeykr"]
 [ext_resource type="Texture2D" uid="uid://dn0kg7pour2nt" path="res://Art/button_att.png" id="2_jph7b"]
@@ -7,7 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://bqcm8ibb1iyi0" path="res://Art/button_run.png" id="5_gmvxc"]
 [ext_resource type="Texture2D" uid="uid://qm30p4vxdxbn" path="res://Art/placeholder_student_battleicon.png" id="6_mthoe"]
 [ext_resource type="Texture2D" uid="uid://cshtwn0i421i7" path="res://Art/placeholder_student_potrait.png" id="7_no0up"]
-[ext_resource type="FontFile" uid="uid://yx8eo66u0ce3" path="res://pixel-comic-sans-undertale-sans-font.ttf" id="8_m3717"]
 
 [node name="Node" type="Node"]
 script = ExtResource("1_oeykr")
@@ -29,7 +28,6 @@ offset_top = 82.0
 offset_right = 712.0
 offset_bottom = 279.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("8_m3717")
 theme_override_font_sizes/font_size = 60
 
 [node name="Attack" type="TextureButton" parent="."]
@@ -119,7 +117,6 @@ offset_top = 26.0
 offset_right = 1145.0
 offset_bottom = 114.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("8_m3717")
 theme_override_font_sizes/font_size = 76
 text = "Wuhoh"
 
@@ -129,7 +126,6 @@ offset_top = 371.0
 offset_right = 521.0
 offset_bottom = 507.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("8_m3717")
 theme_override_font_sizes/font_size = 60
 text = "YOU FUCKED UP"
 
@@ -139,7 +135,6 @@ offset_top = 156.0
 offset_right = 1919.0
 offset_bottom = 324.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("8_m3717")
 theme_override_font_sizes/font_size = 40
 
 [node name="Back" type="TextureButton" parent="."]

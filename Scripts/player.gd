@@ -1,44 +1,25 @@
-class_name Player extends Stats
-extends CharacterBody2D
+
+@onready var character_body_2d = $"."
 
 @export var Player_Mana : int = Max_Mana
-# -------------- CONSTANTS ----------
 
-const speed = 100
 
-# -------------- PHYSICS --------
+func _ready():
+	pass # Replace with function body.
 
-func _physics_process(delta):
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	
 	pass
-	
-func player_movement(delta):
-	
-	# --------- dfs
-	
-	
-	# --------- WASD
-	
-	if Input.is_action_pressed("ui_right"):
-		velocity.x = speed
-		velocity.y = 0
-	elif Input.is_action_pressed("ui_left"):
-		velocity.x = -speed
-		velocity.y = 0
-	elif Input.is_action_pressed("ui_down"):
-		velocity.x = 0
-		velocity.y = -speed
-	elif Input.is_action_pressed("ui_up"):
-		velocity.x = 0
-		velocity.y = speed
-	else:
-		velocity.x = 0
-		velocity.y = 0
-		
-	move_and_slide()
-		
-		
+
+
+
 
 var Max_Mana : int
+var Stats_Name : String
+var Stats_Health : int
+var Max_Health : int
 #initialise
 func _init(mana,health,name):
 	Player_Mana = mana
@@ -48,7 +29,7 @@ func _init(mana,health,name):
 	Max_Health = health
 	
 func Attack():
-	var Damage:int = rng.randi_range(35,50)
+	var Damage:int = randi_range(35,50)
 	return Damage
 
 func Sp1():

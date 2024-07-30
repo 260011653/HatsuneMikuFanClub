@@ -1,75 +1,59 @@
 extends Node
-var rng =RandomNumberGenerator.new() #random number generator
 var Student = Player.new(40,200,"John")
-# Called when the node enters the scene tree for the first time.
-const Enem := preload("res://Scripts/Enemy.gd")
-var Foe = Enem.new("Student",100,"Student throws textbook at you",20,false)
-
-
-func _ready():
-	var assign = rng.randi_range(1,3)
-	match assign:
-		1: 
-			Foe = Enem.new("Student",100,"Student throws textbook at you",20,false)
-			$Student.show()
-		2:
-			Foe = Enem.new("Teacher", 200,"Teacher gives you detention",35, false)
-			$Teacher.show()
-		3:
-			Foe = Enem.new("Rogue Computer", 160,"Rogue Computer sends phishing email",25,false)
-			$Computer.show()
+var RHealth = 999
+var rng =RandomNumberGenerator.new()
+var Move = 0
+#func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	$PlayerDisplay.text = "HEALTH: "+str(Student.Get_Health())+"\nMANA: "+str(Student.Get_Mana())
-	$EnemyDisplay.text = Foe.Get_Name()+": "+str(Foe.Get_Health())
+	$EnemyDisplay.text = "Receptionist: "+str(RHealth)
 	if Student.Dead():
 		await get_tree().create_timer(2).timeout 
 		get_tree().change_scene_to_file("res://Scenes/game_over.tscn")
-	if Foe.Dead() == true:
+	if RHealth <= 0:
 		await get_tree().create_timer(2).timeout 
 		get_tree().change_scene_to_file("res://Scenes/win.tscn")
 
 
-
+func _ready():
+	EnemAttack()
 
 
 
 func EnemAttack():
-	if Foe.Dead() != true and Student.Dead() != true:
-		await get_tree().create_timer(1).timeout 
-		var Move = randi_range(1,4)
-		if Foe.Get_Health() < Foe.Get_Max_Health()/2 and Foe.Get_Heal() == true:
-			Move = rng.randi_range(1,5)
-		match Move:
-			1:
-				var damage = Foe.Attack()
-				$ELog.text = Foe.Get_Name()+" swings dealing \n"+str(damage)+" damage"
-				Student.Damage(damage)
-			2:
-				var damage = Foe.Sp()
-				$ELog.text = Foe.Get_Message()+"\n"+str(damage)+" damage"
-				Student.Damage(damage)
-			3:
-				var damage = Foe.Attack()
-				$ELog.text = Foe.Get_Name()+" swings dealing \n"+str(damage)+" damage"
-				Student.Damage(damage)
-			4:
-				var damage = Foe.Attack()
-				$ELog.text = Foe.Get_Name()+" swings dealing \n"+str(damage)+" damage"
-				Student.Damage(damage)
-			5:
-				Foe.Heal()
-		$Attack.show()
-		$Magic.show()
+	await get_tree().create_timer(0.5).timeout 
+	match Move:
+		0:
+			var damage = 1
+			$ELog.text = "Enemies will attack you, this\nwill display damage\n"+str(damage)+" damage"
+			Student.Damage(damage)
+			await get_tree().create_timer(3).timeout 
+			$ELog.text = "Try pressing attack\nto damage me"
+		1:
+			var Heal = 999-RHealth
+			RHealth = 999
+			$ELog.text = "Some enemies can heal\n"+str(Heal)+" Health"
+			await get_tree().create_timer(3).timeout
+			$ELog.text = "Try pressing magic and try\nusing heal on yourself,\nthis costs mana"
+		2:
+			var damage = 1
+			$ELog.text = "Receptionist swings dealing \n"+str(damage)+" damage"
+			Student.Damage(damage)
+			await get_tree().create_timer(1).timeout 
+			$ELog.text = "Try pressing magic and using\none of your special attacks,\nthese deal more damage than a\nnormal attack but cost mana"
+	Move += 1
+	$Attack.show()
+	$Magic.show()
 
 func _on_attack_pressed():
 	$Attack.hide()
 	$Magic.hide()
 	var damage = Student.Attack()
 	$Log.text = "You punch dealing: \n"+str(damage)+" Damage"
-	Foe.Damage(damage)
+	RHealth -= damage
 	EnemAttack()
 
 
@@ -106,8 +90,9 @@ func _on_sp_1_pressed():
 		$Sp2.hide()
 		$Back.hide()
 		$Run.hide()
-		$Log.text = "You throw your computer: \n"+str(damage)+" Damage"
-		Foe.Damage(damage)
+		if Move >= 3:
+			$Log.text = "You throw your computer: \n"+str(RHealth)+" Damage"
+			RHealth -= RHealth
 		EnemAttack()
 	else:
 		$Log.text = "You don't have the\nmana for that"
@@ -121,9 +106,9 @@ func _on_sp_2_pressed():
 		$Sp2.hide()
 		$Back.hide()
 		$Run.hide()
-		$Log.text = "You show your 100% mark\ndealing: "+str(damage)+" Damage"
-		Foe.Damage(damage)
-		EnemAttack()
+		if Move >= 3:
+			$Log.text = "You show your 100% mark\ndealing: "+str(RHealth)+" Damage"
+			RHealth -= RHealth
 	else:
 		$Log.text = "You don't have the\nmana for that"
 
@@ -136,8 +121,6 @@ func _on_back_pressed():
 	$Magic.show()
 	$Run.hide()
 	
-
-
 func _on_run_pressed():
 	var chance = rng.randi_range(1,100)
 	if chance < 31:

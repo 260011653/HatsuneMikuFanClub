@@ -1,33 +1,20 @@
 extends Node
-var rng =RandomNumberGenerator.new() #random number generator
-#var Student = Player.new(40,200,"John")
-# Called when the node enters the scene tree for the first time.
-const Enem := preload("res://Scripts/Enemy.gd")
-var Foe = Enem.new("Student",100,"Student throws textbook at you",20,false)
-
-
-func _ready():
-	var assign = rng.randi_range(1,3)
-	match assign:
-		1: 
-			Foe = Enem.new("Student",100,"Student throws textbook at you",20,false)
-			$Student.show()
-		2:
-			Foe = Enem.new("Teacher", 200,"Teacher gives you detention",35, false)
-			$Teacher.show()
-		3:
-			Foe = Enem.new("Rogue Computer", 160,"Rogue Computer sends phishing email",25,false)
-			$Computer.show()
+var rng =RandomNumberGenerator.new()
+var Student = Player.new(40,500,"John")
+var RHealth = 2000
+var Max = 2000
+#func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	$PlayerDisplay.text = "HEALTH: "+str(Student.Get_Health())+"\nMANA: "+str(Student.Get_Mana())
-	$EnemyDisplay.text = Foe.Get_Name()+": "+str(Foe.Get_Health())
+	$EnemyDisplay.text = "Printer: "+str(RHealth)
 	if Student.Dead():
 		await get_tree().create_timer(2).timeout 
 		get_tree().change_scene_to_file("res://Scenes/game_over.tscn")
-	if Foe.Dead() == true:
+	if RHealth <= 0:
+		$EnemyDisplay.text = "Printer: 0"
 		await get_tree().create_timer(2).timeout 
 		get_tree().change_scene_to_file("res://Scenes/win.tscn")
 
@@ -37,39 +24,41 @@ func _process(delta):
 
 
 func EnemAttack():
-	if Foe.Dead() != true and Student.Dead() != true:
-		await get_tree().create_timer(1).timeout 
-		var Move = randi_range(1,4)
-		if Foe.Get_Health() < Foe.Get_Max_Health()/2 and Foe.Get_Heal() == true:
-			Move = rng.randi_range(1,5)
-		match Move:
-			1:
-				var damage = Foe.Attack()
-				$ELog.text = Foe.Get_Name()+" swings dealing \n"+str(damage)+" damage"
-				Student.Damage(damage)
-			2:
-				var damage = Foe.Sp()
-				$ELog.text = Foe.Get_Message()+"\n"+str(damage)+" damage"
-				Student.Damage(damage)
-			3:
-				var damage = Foe.Attack()
-				$ELog.text = Foe.Get_Name()+" swings dealing \n"+str(damage)+" damage"
-				Student.Damage(damage)
-			4:
-				var damage = Foe.Attack()
-				$ELog.text = Foe.Get_Name()+" swings dealing \n"+str(damage)+" damage"
-				Student.Damage(damage)
-			5:
-				Foe.Heal()
-		$Attack.show()
-		$Magic.show()
+	await get_tree().create_timer(1).timeout
+	var Move = rng.randi_range(1,5)
+	if RHealth <= Max/2:
+		Move = rng.randi_range(1,6)
+	match Move:
+		1:
+			$ELog.text = "Printer buffers"
+		2:
+			$ELog.text = "Printer jams"
+		3:
+			var damage = rng.randi_range(20,30)
+			$ELog.text = "Printer spews toner over you \n"+str(damage)+" damage"
+			Student.Damage(damage)
+		4:
+			$ELog.text = "Printer gives you a paper cut\n50 damage"
+			Student.Damage(50)
+		5:
+			$ELog.text = "Printer jams"
+		6:
+			var Heal = rng.randi_range(50,150)
+			if RHealth+Heal >= Max:
+				Heal = Max-RHealth
+				RHealth = Max
+			else:
+				RHealth += Heal
+			$ELog.text = "Printer downs some toner \n"+str(Heal)+" Health"
+	$Attack.show()
+	$Magic.show()
 
 func _on_attack_pressed():
 	$Attack.hide()
 	$Magic.hide()
 	var damage = Student.Attack()
 	$Log.text = "You punch dealing: \n"+str(damage)+" Damage"
-	Foe.Damage(damage)
+	RHealth -= damage
 	EnemAttack()
 
 
@@ -79,8 +68,8 @@ func _on_magic_pressed():
 	$Heal.show()
 	$Sp1.show()
 	$Sp2.show()
-	$Back.show()
 	$Run.show()
+	$Back.show()
 
 
 
@@ -107,7 +96,7 @@ func _on_sp_1_pressed():
 		$Back.hide()
 		$Run.hide()
 		$Log.text = "You throw your computer: \n"+str(damage)+" Damage"
-		Foe.Damage(damage)
+		RHealth -= damage
 		EnemAttack()
 	else:
 		$Log.text = "You don't have the\nmana for that"
@@ -122,7 +111,7 @@ func _on_sp_2_pressed():
 		$Back.hide()
 		$Run.hide()
 		$Log.text = "You show your 100% mark\ndealing: "+str(damage)+" Damage"
-		Foe.Damage(damage)
+		RHealth -= damage
 		EnemAttack()
 	else:
 		$Log.text = "You don't have the\nmana for that"

@@ -22,6 +22,8 @@ func Dead(): #returns true if dead
 
 func Damage(damage):
 	Stats_Health -= damage
+	if Stats_Health <= 0:
+		Stats_Health = 0
 
 func Heal():
 	@warning_ignore("integer_division")

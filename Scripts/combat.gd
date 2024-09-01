@@ -22,8 +22,9 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	$PlayerDisplay.text = "HEALTH: "+str(Student.Get_Health())+"\nMANA: "+str(Student.Get_Mana())
-	$EnemyDisplay.text = Foe.Get_Name()+": "+str(Foe.Get_Health())
+	$Mana.text = str(Student.Get_Mana())
+	$HP.text = str(Student.Get_Health())
+	$EnemyDisplay.text = Foe.Get_Name()+":\n"+str(Foe.Get_Health())
 	if Student.Dead():
 		await get_tree().create_timer(2).timeout 
 		get_tree().change_scene_to_file("res://Scenes/game_over.tscn")
@@ -106,7 +107,7 @@ func _on_sp_1_pressed():
 		$Sp2.hide()
 		$Back.hide()
 		$Run.hide()
-		$Log.text = "You throw your computer: \n"+str(damage)+" Damage"
+		$Log.text = "You throw\nyour computer: \n"+str(damage)+" Damage"
 		Foe.Damage(damage)
 		EnemAttack()
 	else:
@@ -121,7 +122,7 @@ func _on_sp_2_pressed():
 		$Sp2.hide()
 		$Back.hide()
 		$Run.hide()
-		$Log.text = "You show your 100% mark\ndealing: "+str(damage)+" Damage"
+		$Log.text = "You show your\n100% mark\ndealing: "+str(damage)+" Damage"
 		Foe.Damage(damage)
 		EnemAttack()
 	else:

@@ -8,7 +8,9 @@ var Max = 3000
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	$PlayerDisplay.text = "HEALTH: "+str(Student.Get_Health())+"\nMANA: "+str(Student.Get_Mana())
+	$Mana.text = str(Student.Get_Mana())
+	$HP.text = str(Student.Get_Health())
+	$EHP.text = str(RHealth)
 	$EnemyDisplay.text = "Mr Van Tonder: "+str(RHealth)
 	if Student.Dead():
 		await get_tree().create_timer(2).timeout 
@@ -17,6 +19,9 @@ func _process(delta):
 		$EnemyDisplay.text = "Mr Van Tonder: 0"
 		await get_tree().create_timer(2).timeout 
 		get_tree().change_scene_to_file("res://Scenes/win.tscn")
+	if RHealth <= 1500:
+		$VanAngry.show()
+		$VanHappy.hide()
 
 
 
@@ -100,7 +105,7 @@ func _on_sp_1_pressed():
 		$Sp2.hide()
 		$Back.hide()
 		$Run.hide()
-		$Log.text = "You throw your computer: \n"+str(damage)+" Damage"
+		$Log.text = "You throw\nyour computer: \n"+str(damage)+" Damage"
 		RHealth -= damage
 		EnemAttack()
 	else:
@@ -115,7 +120,7 @@ func _on_sp_2_pressed():
 		$Sp2.hide()
 		$Back.hide()
 		$Run.hide()
-		$Log.text = "You show your 100% mark\ndealing: "+str(damage)+" Damage"
+		$Log.text = "You show your\n100% mark\ndealing: "+str(damage)+" Damage"
 		RHealth -= damage
 		EnemAttack()
 	else:

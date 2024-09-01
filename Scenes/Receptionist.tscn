@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dlu8c8hg356ry"]
+[gd_scene load_steps=16 format=3 uid="uid://dlu8c8hg356ry"]
 
 [ext_resource type="Script" path="res://Scripts/Receptionist.gd" id="1_awdhf"]
 [ext_resource type="FontFile" uid="uid://yx8eo66u0ce3" path="res://pixel-comic-sans-undertale-sans-font.ttf" id="2_j6ool"]
@@ -12,6 +12,9 @@
 [ext_resource type="Texture2D" uid="uid://2eotmj1n7h24" path="res://Art/button_sma.png" id="7_q78a0"]
 [ext_resource type="Texture2D" uid="uid://cshtwn0i421i7" path="res://Art/placeholder_student_potrait.png" id="8_tcoxt"]
 [ext_resource type="Texture2D" uid="uid://ddemsdbmlqxnd" path="res://Art/back.png" id="9_jj1om"]
+[ext_resource type="Texture2D" uid="uid://bqdyp38w5mcqg" path="res://Art/gui_health.png" id="12_0y3op"]
+[ext_resource type="Texture2D" uid="uid://dpevno03iqvuo" path="res://Art/gui_mana.png" id="13_spqrl"]
+[ext_resource type="Texture2D" uid="uid://bi2hiv412o068" path="res://Art/gui_textbox.png" id="14_vcfmr"]
 
 [node name="Node" type="Node"]
 script = ExtResource("1_awdhf")
@@ -20,65 +23,6 @@ script = ExtResource("1_awdhf")
 offset_right = 1920.0
 offset_bottom = 1080.0
 texture = ExtResource("2_utck8")
-
-[node name="Log" type="Label" parent="."]
-offset_left = 11.0
-offset_top = 82.0
-offset_right = 712.0
-offset_bottom = 279.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("2_j6ool")
-theme_override_font_sizes/font_size = 60
-
-[node name="Attack" type="TextureButton" parent="."]
-offset_left = 755.0
-offset_top = 578.0
-offset_right = 1212.0
-offset_bottom = 776.0
-texture_normal = ExtResource("3_3jl6n")
-stretch_mode = 5
-
-[node name="Magic" type="TextureButton" parent="."]
-offset_left = 778.0
-offset_top = 776.0
-offset_right = 1189.0
-offset_bottom = 974.0
-texture_normal = ExtResource("4_r13mq")
-stretch_mode = 5
-
-[node name="Heal" type="TextureButton" parent="."]
-visible = false
-offset_left = 542.0
-offset_top = 657.0
-offset_right = 934.0
-offset_bottom = 859.0
-texture_normal = ExtResource("5_50sxo")
-stretch_mode = 4
-
-[node name="Sp1" type="TextureButton" parent="."]
-visible = false
-offset_left = 927.0
-offset_top = 657.0
-offset_right = 1320.0
-offset_bottom = 856.0
-texture_normal = ExtResource("6_cwilp")
-stretch_mode = 4
-
-[node name="Sp2" type="TextureButton" parent="."]
-visible = false
-offset_left = 536.0
-offset_top = 849.0
-offset_right = 946.0
-offset_bottom = 1048.0
-texture_normal = ExtResource("7_q78a0")
-stretch_mode = 4
-
-[node name="JohnACG" type="TextureRect" parent="."]
-offset_left = 2.0
-offset_top = 507.0
-offset_right = 537.0
-offset_bottom = 1084.0
-texture = ExtResource("7_lmg6l")
 
 [node name="Receptionist" type="TextureRect" parent="."]
 offset_left = 763.0
@@ -97,40 +41,135 @@ theme_override_fonts/font = ExtResource("2_j6ool")
 theme_override_font_sizes/font_size = 76
 text = "Wuhoh"
 
-[node name="PlayerDisplay" type="Label" parent="."]
-offset_left = 8.0
-offset_top = 371.0
-offset_right = 521.0
-offset_bottom = 507.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+[node name="Health" type="TextureRect" parent="."]
+offset_left = 17.0
+offset_top = 805.0
+offset_right = 246.0
+offset_bottom = 917.0
+texture = ExtResource("12_0y3op")
+stretch_mode = 4
+
+[node name="mana" type="TextureRect" parent="."]
+offset_left = 17.0
+offset_top = 931.0
+offset_right = 246.0
+offset_bottom = 1043.0
+texture = ExtResource("13_spqrl")
+stretch_mode = 4
+
+[node name="Etextbox" type="TextureRect" parent="."]
+offset_left = 1376.0
+offset_top = 17.0
+offset_right = 1895.0
+offset_bottom = 787.0
+texture = ExtResource("14_vcfmr")
+
+[node name="Ptextbox" type="TextureRect" parent="."]
+offset_left = 25.0
+offset_top = 17.0
+offset_right = 544.0
+offset_bottom = 787.0
+texture = ExtResource("14_vcfmr")
+
+[node name="JohnACG" type="TextureRect" parent="."]
+offset_left = 246.0
+offset_top = 795.0
+offset_right = 544.0
+offset_bottom = 1076.0
+texture = ExtResource("7_lmg6l")
+
+[node name="Log" type="Label" parent="."]
+offset_left = 54.0
+offset_top = 44.0
+offset_right = 509.0
+offset_bottom = 753.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("2_j6ool")
-theme_override_font_sizes/font_size = 60
-text = "YOU FUCKED UP"
+theme_override_font_sizes/font_size = 50
 
 [node name="ELog" type="Label" parent="."]
-offset_left = 1272.0
-offset_top = 156.0
-offset_right = 1919.0
-offset_bottom = 324.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+offset_left = 1402.0
+offset_top = 45.0
+offset_right = 1878.0
+offset_bottom = 757.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("2_j6ool")
-theme_override_font_sizes/font_size = 40
+theme_override_font_sizes/font_size = 30
+
+[node name="Mana" type="Label" parent="."]
+offset_left = 150.0
+offset_top = 960.0
+offset_right = 207.0
+offset_bottom = 1030.0
+theme_override_fonts/font = ExtResource("2_j6ool")
+theme_override_font_sizes/font_size = 60
+
+[node name="HP" type="Label" parent="."]
+offset_left = 140.0
+offset_top = 840.0
+offset_right = 223.0
+offset_bottom = 888.0
+theme_override_fonts/font = ExtResource("2_j6ool")
+theme_override_font_sizes/font_size = 50
+
+[node name="Attack" type="TextureButton" parent="."]
+offset_left = 361.0
+offset_top = 667.0
+offset_right = 1552.0
+offset_bottom = 857.0
+texture_normal = ExtResource("3_3jl6n")
+stretch_mode = 5
+
+[node name="Magic" type="TextureButton" parent="."]
+offset_left = 364.0
+offset_top = 878.0
+offset_right = 1549.0
+offset_bottom = 1068.0
+texture_normal = ExtResource("4_r13mq")
+stretch_mode = 5
+
+[node name="Heal" type="TextureButton" parent="."]
+visible = false
+offset_left = 562.0
+offset_top = 667.0
+offset_right = 942.0
+offset_bottom = 857.0
+texture_normal = ExtResource("5_50sxo")
+stretch_mode = 4
+
+[node name="Sp1" type="TextureButton" parent="."]
+visible = false
+offset_left = 967.0
+offset_top = 667.0
+offset_right = 1347.0
+offset_bottom = 857.0
+texture_normal = ExtResource("6_cwilp")
+stretch_mode = 4
+
+[node name="Sp2" type="TextureButton" parent="."]
+visible = false
+offset_left = 562.0
+offset_top = 878.0
+offset_right = 942.0
+offset_bottom = 1068.0
+texture_normal = ExtResource("7_q78a0")
+stretch_mode = 4
 
 [node name="Back" type="TextureButton" parent="."]
 visible = false
-offset_left = 1322.0
-offset_top = 866.0
-offset_right = 1577.0
-offset_bottom = 1047.0
+offset_left = 1181.0
+offset_top = 878.0
+offset_right = 1436.0
+offset_bottom = 1068.0
 texture_normal = ExtResource("9_jj1om")
 stretch_mode = 4
 
 [node name="Run" type="TextureButton" parent="."]
 visible = false
-offset_left = 928.0
-offset_top = 852.0
-offset_right = 1320.0
-offset_bottom = 1054.0
+offset_left = 967.0
+offset_top = 878.0
+offset_right = 1193.0
+offset_bottom = 1068.0
 texture_normal = ExtResource("6_lycmj")
 stretch_mode = 4
 

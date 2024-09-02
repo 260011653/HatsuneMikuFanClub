@@ -5,11 +5,8 @@ var current_dir = "none" #direction of movement
 var nav_active: bool  = false #is pathfinding active?
 @onready var navigation_agent: NavigationAgent2D = $NavigationAgent2D
 
-@onready var tile_map: TileMap = $"../TileMap"
-
 func _ready():
 	#default animation
-	GlobalUtil.write_mesh(tile_map.get_used_cells(0),get_tree().current_scene.name)
 	
 	$AnimatedSprite2D.play("idle_down")
 

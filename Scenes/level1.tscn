@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://buxg6bxiffbfj"]
+[gd_scene load_steps=8 format=3 uid="uid://buxg6bxiffbfj"]
 
 [ext_resource type="Texture2D" uid="uid://803yb07wdkcn" path="res://Art/background/3840x2160-black-solid-color-background.jpg" id="1_255cc"]
 [ext_resource type="Texture2D" uid="uid://c4t7pntwljauf" path="res://Art/tilemaps/hallway.png" id="2_ytar1"]
 [ext_resource type="PackedScene" uid="uid://ce2b4mv8y2x08" path="res://Scenes/playercharacter.tscn" id="3_fyl13"]
+[ext_resource type="Script" path="res://Scripts/sceneloader.gd" id="4_ybilw"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_aph8l"]
 texture = ExtResource("2_ytar1")
@@ -406,3 +407,6 @@ position = Vector2(18, 70)
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 navigation_polygon = SubResource("NavigationPolygon_flqrg")
+
+[node name="Loader" type="Node" parent="."]
+script = ExtResource("4_ybilw")

@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://dlu8c8hg356ry"]
+[gd_scene load_steps=13 format=3 uid="uid://dlu8c8hg356ry"]
 
 [ext_resource type="Script" path="res://Scripts/Receptionist.gd" id="1_awdhf"]
 [ext_resource type="FontFile" uid="uid://yx8eo66u0ce3" path="res://pixel-comic-sans-undertale-sans-font.ttf" id="2_j6ool"]
+[ext_resource type="Texture2D" uid="uid://c2w3yds4pn4qv" path="res://Art/rece_bg.png" id="2_utck8"]
 [ext_resource type="Texture2D" uid="uid://dn0kg7pour2nt" path="res://Art/button_att.png" id="3_3jl6n"]
 [ext_resource type="Texture2D" uid="uid://bp00625gpgq8a" path="res://Art/button_mag.png" id="4_r13mq"]
 [ext_resource type="Texture2D" uid="uid://bevfmmcra5nck" path="res://Art/button_hea.png" id="5_50sxo"]
@@ -15,16 +16,10 @@
 [node name="Node" type="Node"]
 script = ExtResource("1_awdhf")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 3.0
-offset_top = 4.0
-offset_right = 3.0
-offset_bottom = 4.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("2_utck8")
 
 [node name="Log" type="Label" parent="."]
 offset_left = 11.0
@@ -144,3 +139,5 @@ stretch_mode = 4
 [connection signal="pressed" from="Heal" to="." method="_on_heal_pressed"]
 [connection signal="pressed" from="Sp1" to="." method="_on_sp_1_pressed"]
 [connection signal="pressed" from="Sp2" to="." method="_on_sp_2_pressed"]
+[connection signal="pressed" from="Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="Run" to="." method="_on_run_pressed"]

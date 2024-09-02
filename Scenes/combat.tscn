@@ -1,0 +1,159 @@
+[gd_scene load_steps=13 format=3 uid="uid://bh87k8845grhg"]
+
+[ext_resource type="Script" path="res://Scripts/combat.gd" id="1_oeykr"]
+[ext_resource type="Texture2D" uid="uid://bljwwr3by46b" path="res://Art/f1_bg.png" id="2_i0dv2"]
+[ext_resource type="Texture2D" uid="uid://dn0kg7pour2nt" path="res://Art/button_att.png" id="2_jph7b"]
+[ext_resource type="Texture2D" uid="uid://bp00625gpgq8a" path="res://Art/button_mag.png" id="3_hyr67"]
+[ext_resource type="Texture2D" uid="uid://bevfmmcra5nck" path="res://Art/button_hea.png" id="4_q7ylt"]
+[ext_resource type="Texture2D" uid="uid://bqcm8ibb1iyi0" path="res://Art/button_run.png" id="5_gmvxc"]
+[ext_resource type="Texture2D" uid="uid://b251cv06squc4" path="res://Art/button_thr.png" id="6_kxjts"]
+[ext_resource type="Texture2D" uid="uid://qm30p4vxdxbn" path="res://Art/placeholder_student_battleicon.png" id="6_mthoe"]
+[ext_resource type="Texture2D" uid="uid://2eotmj1n7h24" path="res://Art/button_sma.png" id="7_f6v4l"]
+[ext_resource type="Texture2D" uid="uid://cshtwn0i421i7" path="res://Art/placeholder_student_potrait.png" id="7_no0up"]
+[ext_resource type="FontFile" uid="uid://yx8eo66u0ce3" path="res://pixel-comic-sans-undertale-sans-font.ttf" id="8_m3717"]
+[ext_resource type="Texture2D" uid="uid://ddemsdbmlqxnd" path="res://Art/back.png" id="10_4n2kl"]
+
+[node name="Node" type="Node"]
+script = ExtResource("1_oeykr")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("2_i0dv2")
+
+[node name="Log" type="Label" parent="."]
+offset_left = 11.0
+offset_top = 82.0
+offset_right = 712.0
+offset_bottom = 279.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("8_m3717")
+theme_override_font_sizes/font_size = 60
+
+[node name="Attack" type="TextureButton" parent="."]
+offset_left = 755.0
+offset_top = 578.0
+offset_right = 1212.0
+offset_bottom = 776.0
+texture_normal = ExtResource("2_jph7b")
+stretch_mode = 5
+
+[node name="Magic" type="TextureButton" parent="."]
+offset_left = 778.0
+offset_top = 776.0
+offset_right = 1189.0
+offset_bottom = 974.0
+texture_normal = ExtResource("3_hyr67")
+stretch_mode = 5
+
+[node name="Heal" type="TextureButton" parent="."]
+visible = false
+offset_left = 542.0
+offset_top = 657.0
+offset_right = 934.0
+offset_bottom = 859.0
+texture_normal = ExtResource("4_q7ylt")
+stretch_mode = 4
+
+[node name="Sp1" type="TextureButton" parent="."]
+visible = false
+offset_left = 927.0
+offset_top = 657.0
+offset_right = 1320.0
+offset_bottom = 856.0
+texture_normal = ExtResource("6_kxjts")
+stretch_mode = 4
+
+[node name="Sp2" type="TextureButton" parent="."]
+visible = false
+offset_left = 542.0
+offset_top = 849.0
+offset_right = 944.0
+offset_bottom = 1048.0
+texture_normal = ExtResource("7_f6v4l")
+stretch_mode = 4
+
+[node name="JohnACG" type="TextureRect" parent="."]
+offset_left = 1.0
+offset_top = 503.0
+offset_right = 536.0
+offset_bottom = 1080.0
+texture = ExtResource("6_mthoe")
+
+[node name="Student" type="TextureRect" parent="."]
+offset_left = 763.0
+offset_top = 108.0
+offset_right = 1194.0
+offset_bottom = 553.0
+texture = ExtResource("7_no0up")
+
+[node name="Teacher" type="TextureRect" parent="."]
+visible = false
+offset_left = 763.0
+offset_top = 103.0
+offset_right = 1194.0
+offset_bottom = 548.0
+texture = ExtResource("7_no0up")
+
+[node name="Computer" type="TextureRect" parent="."]
+visible = false
+offset_left = 763.0
+offset_top = 105.0
+offset_right = 1194.0
+offset_bottom = 550.0
+texture = ExtResource("7_no0up")
+
+[node name="EnemyDisplay" type="Label" parent="."]
+offset_left = 737.0
+offset_top = 26.0
+offset_right = 1145.0
+offset_bottom = 114.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("8_m3717")
+theme_override_font_sizes/font_size = 76
+text = "Wuhoh"
+
+[node name="PlayerDisplay" type="Label" parent="."]
+offset_left = 8.0
+offset_top = 371.0
+offset_right = 521.0
+offset_bottom = 507.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("8_m3717")
+theme_override_font_sizes/font_size = 60
+text = "YOU FUCKED UP"
+
+[node name="ELog" type="Label" parent="."]
+offset_left = 1272.0
+offset_top = 156.0
+offset_right = 1919.0
+offset_bottom = 324.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("8_m3717")
+theme_override_font_sizes/font_size = 40
+
+[node name="Back" type="TextureButton" parent="."]
+visible = false
+offset_left = 1322.0
+offset_top = 866.0
+offset_right = 1577.0
+offset_bottom = 1047.0
+texture_normal = ExtResource("10_4n2kl")
+stretch_mode = 4
+
+[node name="Run" type="TextureButton" parent="."]
+visible = false
+offset_left = 928.0
+offset_top = 852.0
+offset_right = 1320.0
+offset_bottom = 1054.0
+texture_normal = ExtResource("5_gmvxc")
+stretch_mode = 4
+
+[connection signal="pressed" from="Attack" to="." method="_on_attack_pressed"]
+[connection signal="pressed" from="Magic" to="." method="_on_magic_pressed"]
+[connection signal="pressed" from="Heal" to="." method="_on_heal_pressed"]
+[connection signal="pressed" from="Sp1" to="." method="_on_sp_1_pressed"]
+[connection signal="pressed" from="Sp2" to="." method="_on_sp_2_pressed"]
+[connection signal="pressed" from="Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="Run" to="." method="_on_run_pressed"]

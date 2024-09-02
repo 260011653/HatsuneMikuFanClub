@@ -45,8 +45,7 @@ func EnemAttack():
 			await get_tree().create_timer(1).timeout 
 			$ELog.text = "Try pressing magic and using\none of your special attacks,\nthese deal more damage than a\nnormal attack but cost mana"
 	Move += 1
-	$Attack.show()
-	$Magic.show()
+
 
 func _on_attack_pressed():
 	$Attack.hide()
@@ -55,6 +54,8 @@ func _on_attack_pressed():
 	$Log.text = "You punch dealing: \n"+str(damage)+" Damage"
 	RHealth -= damage
 	EnemAttack()
+	$Attack.show()
+	$Magic.show()
 
 
 func _on_magic_pressed():
@@ -77,6 +78,8 @@ func _on_heal_pressed():
 		$Back.hide()
 		$Run.hide()
 		EnemAttack()
+		$Attack.show()
+		$Magic.show()
 		$Log.text = "You heal for:\n"+str(check)
 	else:
 		$Log.text = "You don't have the\nmana for that"
@@ -94,6 +97,8 @@ func _on_sp_1_pressed():
 			$Log.text = "You throw your computer: \n"+str(RHealth)+" Damage"
 			RHealth -= RHealth
 		EnemAttack()
+		$Attack.show()
+		$Magic.show()
 	else:
 		$Log.text = "You don't have the\nmana for that"
 
@@ -122,13 +127,4 @@ func _on_back_pressed():
 	$Run.hide()
 	
 func _on_run_pressed():
-	var chance = rng.randi_range(1,100)
-	if chance < 31:
-		get_tree().change_scene_to_file("res://Scenes/.tscn") #switch out for right scene
-	$Heal.hide()
-	$Sp1.hide()
-	$Sp2.hide()
-	$Back.hide()
-	$Run.hide()
-	$Attack.show()
-	$Magic.show()
+	$Log.text = "You cannot run\nfrom this fight"

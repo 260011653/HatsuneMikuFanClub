@@ -128,13 +128,4 @@ func _on_back_pressed():
 
 
 func _on_run_pressed():
-	var chance = rng.randi_range(1,100)
-	if chance < 31:
-		get_tree().change_scene_to_file("res://Scenes/.tscn") #switch out for right scene
-	$Heal.hide()
-	$Sp1.hide()
-	$Sp2.hide()
-	$Back.hide()
-	$Run.hide()
-	$Attack.show()
-	$Magic.show()
+	$Log.text = "You cannot run\nfrom this fight"

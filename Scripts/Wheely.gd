@@ -71,6 +71,7 @@ func _on_magic_pressed():
 	$Heal.show()
 	$Sp1.show()
 	$Sp2.show()
+	$Run.show()
 	$Back.show()
 
 
@@ -82,6 +83,7 @@ func _on_heal_pressed():
 		$Sp1.hide()
 		$Sp2.hide()
 		$Back.hide()
+		$Run.hide()
 		EnemAttack()
 		$Log.text = "You heal for:\n"+str(check)
 	else:
@@ -95,6 +97,7 @@ func _on_sp_1_pressed():
 		$Sp1.hide()
 		$Sp2.hide()
 		$Back.hide()
+		$Run.hide()
 		$Log.text = "You throw your computer: \n"+str(damage)+" Damage"
 		RHealth -= damage
 		EnemAttack()
@@ -109,6 +112,7 @@ func _on_sp_2_pressed():
 		$Sp1.hide()
 		$Sp2.hide()
 		$Back.hide()
+		$Run.hide()
 		$Log.text = "You show your 100% mark\ndealing: "+str(damage)+" Damage"
 		RHealth -= damage
 		EnemAttack()
@@ -121,5 +125,8 @@ func _on_back_pressed():
 	$Sp2.hide()
 	$Back.hide()
 	$Attack.show()
+	$Run.hide()
 	$Magic.show()
-	
+
+func _on_run_pressed():
+	$Log.text = "You cannot run\nfrom this fight"

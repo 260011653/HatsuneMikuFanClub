@@ -1,25 +1,8 @@
-
-@onready var character_body_2d = $"."
+class_name Player extends Stats
 
 @export var Player_Mana : int = Max_Mana
 
-
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	
-	pass
-
-
-
-
 var Max_Mana : int
-var Stats_Name : String
-var Stats_Health : int
-var Max_Health : int
 #initialise
 func _init(mana,health,name):
 	Player_Mana = mana
@@ -29,7 +12,7 @@ func _init(mana,health,name):
 	Max_Health = health
 	
 func Attack():
-	var Damage:int = randi_range(35,50)
+	var Damage:int = rng.randi_range(35,50)
 	return Damage
 
 func Sp1():

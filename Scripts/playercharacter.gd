@@ -3,7 +3,7 @@ extends CharacterBody2D
 const speed = 100 #standard movement speed
 var current_dir = "none" #direction of movement
 var nav_active: bool  = false #is pathfinding active?
-@onready var navigation_agent: NavigationAgent2D = $NavigationAgent2D
+#@onready var navigation_agent: NavigationAgent2D = $NavigationAgent2D
 
 func _ready():
 	#default animation
@@ -11,12 +11,12 @@ func _ready():
 	$AnimatedSprite2D.play("idle_down")
 
 func _physics_process(delta):
-	if nav_active:
-		var next_path_pos := navigation_agent.get_next_path_position()
-		var direction := global_position.direction_to(next_path_pos)
-		velocity = direction * speed
-	else:
-		velocity = Vector2.ZERO
+	#if nav_active:
+		##var next_path_pos := navigation_agent.get_next_path_position()
+		##var direction := global_position.direction_to(next_path_pos)
+		##velocity = direction * speed
+	#else:
+		#velocity = Vector2.ZERO
 	
 	move_and_slide()
 	player_movement(delta)
@@ -25,16 +25,31 @@ func _physics_process(delta):
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if event.pressed and event.button_index == MOUSE_BUTTON_RIGHT:
-			navigation_agent.target_position = get_global_mouse_position()
+			bfs_move(get_global_mouse_position())
+			#navigation_agent.target_position = get_global_mouse_position()
 			nav_active = true
 			
-func _on_navigation_agent_2d_target_reached() -> void:
-	print("reached target")
-	nav_active = false
+func bfs_move(mouse_pos) -> void:
+	var adj = GlobalUtil.load_mesh(get_tree().current_scene.name)
+	#TESTED OK
+	#///////////////////
+	var parent = [global_position.x, global_position.y]
+	var target = [mouse_pos.x, mouse_pos.y]
 	
-func _on_navigation_agent_2d_navigation_finished() -> void:
-	print("Navigation finished")
-	nav_active = false
+	print(target)
+	
+	
+	
+	
+	
+			#
+#func _on_navigation_agent_2d_target_reached() -> void:
+	#print("reached target")
+	#nav_active = false
+	#
+#func _on_navigation_agent_2d_navigation_finished() -> void:
+	#print("Navigation finished")
+	#nav_active = false
 
 #Manual arrow key movement
 func player_movement(delta):

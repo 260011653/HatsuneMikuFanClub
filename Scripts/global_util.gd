@@ -100,6 +100,39 @@ func load_mesh(levelname) -> Dictionary:
 		return file.get_var()
 	return {}
 	
+class kNode:
+	func _init(ipoint):
+		var left = null
+		var right = null
+		var point = ipoint #[x,y]
+		
+func newkNode(point) -> kNode:
+	return kNode.new(point)
+
+func insertRec(root, point, depth):
+	if not root:
+		return newkNode(point)
+	var cd = depth % 2 #current dimension of comparison with root node as x-aligned
+	
+	if point[cd] < root.point[cd]: #if equal, go right (treat as greater)
+		root.left = insertRec(root.left, point, depth+1)
+	else:
+		root.right = insertRec(root.right, point, depth+1)
+	return root
+	
+func insertk(root,point):
+	return insertRec(root,point,0)
+	
+func points_equal(point1,point2) -> bool:
+	if point1[0] == point2[0] and point1[1] == point2[1]:
+		return true
+	else: return false
+	
+func find_closest_node(point) -> Array:
+	return [69,69] #stud
+	
+	
+	
 	
 	
 

@@ -34,7 +34,11 @@ func bfs_move(mouse_pos) -> void:
 	#TESTED OK
 	#///////////////////
 	var parent = [global_position.x, global_position.y]
-	var target = [mouse_pos.x, mouse_pos.y]
+	var target = [mouse_pos.x / 16, mouse_pos.y / 16]
+	
+	print(target)
+	
+	target = GlobalUtil.currentSceneTree.findNearestNeighbour(target)
 	
 	print(target)
 	

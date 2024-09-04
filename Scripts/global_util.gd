@@ -75,14 +75,14 @@ func write_mesh_json(meshArr,savename) -> void:
 		var newcoordinate = coordinate
 		newcoordinate[0] += 1
 		if shelf.has(newcoordinate):
-			adj[coordinate].append(newcoordinate)
+			adj[coordinate].append([newcoordinate[0], newcoordinate[1]])
 		newcoordinate[0] -= 2
 		if shelf.has(newcoordinate):
-			adj[coordinate].append(newcoordinate)
+			adj[coordinate].append([newcoordinate[0], newcoordinate[1]])
 		newcoordinate[0] += 1
 		newcoordinate[1] += 1
 		if shelf.has(newcoordinate):
-			adj[coordinate].append(newcoordinate)
+			adj[coordinate].append([newcoordinate[0], newcoordinate[1]])
 		newcoordinate[1] -= 1
 		if shelf.has(newcoordinate):
 			adj[coordinate].append([newcoordinate[0], newcoordinate[1]])
@@ -100,37 +100,105 @@ func load_mesh(levelname) -> Dictionary:
 		return file.get_var()
 	return {}
 	
-class kNode:
-	func _init(ipoint):
-		var left = null
-		var right = null
-		var point = ipoint #[x,y]
-		
-func newkNode(point) -> kNode:
-	return kNode.new(point)
+func vector_to_array(pointsAr):
+	var ret = []
+	for point in pointsAr:
+		ret.append([point[0],point[1]])
+	return ret
 
-func insertRec(root, point, depth):
-	if not root:
-		return newkNode(point)
-	var cd = depth % 2 #current dimension of comparison with root node as x-aligned
+class kTree:
 	
-	if point[cd] < root.point[cd]: #if equal, go right (treat as greater)
-		root.left = insertRec(root.left, point, depth+1)
-	else:
-		root.right = insertRec(root.right, point, depth+1)
-	return root
-	
-func insertk(root,point):
-	return insertRec(root,point,0)
-	
-func points_equal(point1,point2) -> bool:
-	if point1[0] == point2[0] and point1[1] == point2[1]:
-		return true
-	else: return false
-	
-func find_closest_node(point) -> Array:
-	return [69,69] #stud
-	
+	class kNode:
+		var left
+		var right
+		var point
+		func _init(ipoint):
+			self.left = null
+			self.right = null
+			self.point = ipoint #[x,y]
+			
+	var root: kNode = null
+			
+	func newkNode(point) -> kNode:
+		return kNode.new(point)
+
+	#insert point into tree
+	func insertRec(root, point, depth): #root = null if adding root
+		if root == null:
+			#print("hi")
+			return newkNode(point)
+		var cd = depth % 2 #current dimension of comparison with root node as x-aligned
+		
+		#print(root.point)
+		
+		if point[cd] < root.point[cd]: #if equal, go right (treat as greater)
+			root.left = insertRec(root.left, point, depth+1)
+		else:
+			root.right = insertRec(root.right, point, depth+1)
+		return root
+		
+	func insertNode(point: Array):
+		if root == null:
+			self.root = newkNode(point)
+			return 1
+		#print(point)
+		#if root != null:
+			#print(root.point)
+		return insertRec(root,point,0)
+		
+	func points_equal(point1: Array,point2: Array) -> bool:
+		if point1[0] == point2[0] and point1[1] == point2[1]:
+			return true
+		else: return false
+		
+	func closest_node_to_target(target: Array, node1: kNode, node2: kNode) -> kNode: #returns the closest node to target pos
+		if node1 == null:
+			return node2
+		if node2 == null:
+			return node1
+		var d1 = ((target[0] - node1.point[0])**2 + (target[1] - node1.point[1])**2)**0.5
+		var d2 = ((target[0] - node2.point[0])**2 + (target[1] - node2.point[1])**2)**0.5
+		if d1 >= d2:
+			return node1
+		else: return node2
+		
+	func hypotSquared(point1: Array, point2: Array) -> float: #returns distance between points squared
+		return (point1[0] - point2[0])**2 + (point1[1] - point2[1])**2
+			
+	func nearestNeighbour(root, target, depth):
+		if root == null:
+			return null
+		var nextBranch: kNode
+		var otherBranch: kNode
+		if (target[depth%2] < root.point[depth%2]):
+			nextBranch = root.left
+			otherBranch = root.right
+		else:
+			nextBranch = root.right
+			otherBranch = root.left
+		
+		var temp : kNode = nearestNeighbour(nextBranch, target, depth+1)
+		var best : kNode = closest_node_to_target(target, temp, root)
+		
+		var radiusSquared = hypotSquared(target, best.point) #r, dist from best to target
+		var dist = target[depth%2] - root.point[depth%2] #r' dist to the root axis divider
+		
+		if (radiusSquared >= dist * dist):
+			temp = nearestNeighbour(otherBranch, target, depth+1)
+			best = closest_node_to_target(target, temp, best)
+		
+		return best
+		
+	func findNearestNeighbour(target):
+		#print(self.root.point)
+		var ret = nearestNeighbour(self.root, target, 0)
+		if ret == null: return null
+		else: return ret.point
+
+var currentSceneTree: kTree = null
+
+func setCurrentSceneTree(tree):
+	GlobalUtil.currentSceneTree = tree
 	
 	
 	

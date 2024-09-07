@@ -2,6 +2,7 @@ extends Node
 
 @onready var tile_map: TileMap = $"../TileMap"
 # Called when the node enters the scene tree for the first time.
+@onready var player: CharacterBody2D = $"../playercharacter"
 
 func create_balanced_ktree(tree,pointsAr) -> GlobalUtil.kTree: #pointsAr should be already X-sorted
 	#print(pointsAr)
@@ -26,6 +27,15 @@ func create_balanced_ktree(tree,pointsAr) -> GlobalUtil.kTree: #pointsAr should 
 	return tree
 
 func _ready():
+	
+	if SceneTransition.last_direction == "up":
+		player.position = SceneTransition.scene_starting_positions[get_tree().current_scene.name]["up"] 
+	elif SceneTransition.last_direction == "down":
+		player.position = SceneTransition.scene_starting_positions[get_tree().current_scene.name]["down"] 
+	
+	if GlobalUtil.first_spawn:
+		player.position = Vector2(10,66)
+		GlobalUtil.first_spawn = false
 	#get cells and create balanced K-tree
 	var cell_points = tile_map.get_used_cells(0)
 	cell_points = GlobalUtil.vector_to_array(cell_points)

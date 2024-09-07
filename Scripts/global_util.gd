@@ -1,5 +1,7 @@
 extends Node
 
+var first_spawn = true
+
 func write_mesh(meshArr,savename) -> void:
 	
 	var file = FileAccess.open("res://Scripts/meshes.gd", FileAccess.READ_WRITE)

@@ -18,8 +18,8 @@ config/icon="res://icon.png"
 [autoload]
 
 Student="*res://Scripts/student.gd"
-Meshes="*res://Scripts/meshes.gd"
 GlobalUtil="*res://Scripts/global_util.gd"
+SceneTransition="*res://Scenes/scene_transition.tscn"
 
 [display]
 

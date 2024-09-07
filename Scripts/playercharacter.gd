@@ -5,6 +5,7 @@ var current_dir = "none" #direction of movement
 var nav_active: bool  = false #is pathfinding active? #RETIRED
 var current_scene_name : String = ""
 var current_path_to_move = []
+var current_pos = []
 #@onready var navigation_agent: NavigationAgent2D = $NavigationAgent2D
 
 func _ready():
@@ -27,13 +28,18 @@ func _unhandled_input(event: InputEvent) -> void:
 			#navigation_agent.target_position = get_global_mouse_position()
 			nav_active = true
 			
+
+			
+#func check_scene_exit(curr_scene):
+	#
+			
 func movement_control(delta):
 	
 	print(current_path_to_move)
 	if current_path_to_move.size() < 1:
 		nav_active = false
 	if nav_active:
-		var current_pos = [GlobalUtil.snap_to_whole(global_position.x/16 - 0.5, 0.1) + 0.5, GlobalUtil.snap_to_whole(global_position.y/16, 0.1)]
+		current_pos = [GlobalUtil.snap_to_whole(global_position.x/16 - 0.5, 0.1) + 0.5, GlobalUtil.snap_to_whole(global_position.y/16, 0.1)]
 		#print(current_pos)
 		if GlobalUtil.hypot(current_pos, current_path_to_move.back()) == 0:
 			current_path_to_move.pop_back()
@@ -52,11 +58,15 @@ func movement_control(delta):
 func bfs_move(mouse_pos) -> void: #breadth first search guarantees shortest path in unweighted graph!
 	var adj = GlobalUtil.load_mesh(current_scene_name)
 	
-	print(adj)
+	#print(adj)
 	#TESTED OK (it wasnt ok)
 	#///////////////////
-	var source = [int(roundf(global_position.x/16 - 0.5)), int(roundf(global_position.y)/16)] #round player pos to whole number
+	
+	#var testsource = [round(global_position.x/16 - 0.5), round(global_position.y/16 - 0.5)]
+	var source = [int(round(global_position.x/16 - 0.5)), int(round(global_position.y/16))] #round player pos to whole number
 	var target = [mouse_pos.x / 16 - 0.5, mouse_pos.y / 16 - 0.5]
+	
+	print(source)
 	
 	var q = [] #queue
 	var vis = {} #dict of visited nodes
@@ -152,7 +162,7 @@ func player_movement(delta):
 	
 func play_anim(movement):
 	
-	print(velocity.x,", ", velocity.y)
+	#print(velocity.x,", ", velocity.y)
 	
 	if abs(velocity.y) > abs(velocity.x):
 		if velocity.y > 0: current_dir = "down"
@@ -184,3 +194,18 @@ func play_anim(movement):
 			anim.play("walk_down")
 		elif movement == false:
 			anim.play("idle_down")
+
+
+func _on_area_2d_body_entered(body):
+	if body.get_name() == "playercharacter":
+		var pos = [int(roundf(global_position.x/16 - 0.5)), int(roundf(global_position.y - 0.5)/16)]
+		#print(SceneTransition.transition_conditions["reception"][[8,0]][0])
+		SceneTransition.change_scene(SceneTransition.transition_conditions[current_scene_name][pos][0],SceneTransition.transition_conditions[current_scene_name][pos][1]) #round player pos to whole number])
+		print("entered")
+	
+func _on_area_2d_body_exited(body):
+	pass # Replace with function body.
+
+
+func _on_area_2d_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):
+	pass # Replace with function body.

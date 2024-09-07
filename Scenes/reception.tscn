@@ -1,9 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://d0bry5suudu50"]
+[gd_scene load_steps=6 format=3 uid="uid://d0bry5suudu50"]
 
 [ext_resource type="Script" path="res://Scripts/sceneloader.gd" id="1_dchcm"]
 [ext_resource type="Texture2D" uid="uid://803yb07wdkcn" path="res://Art/background/3840x2160-black-solid-color-background.jpg" id="1_i0n5k"]
 [ext_resource type="TileSet" uid="uid://cya47ra4sng0t" path="res://Scenes/tileset_game.tres" id="2_6y2q1"]
 [ext_resource type="PackedScene" uid="uid://ce2b4mv8y2x08" path="res://Scenes/playercharacter.tscn" id="3_8muit"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a0qmj"]
+size = Vector2(32, 13)
 
 [node name="reception" type="Node"]
 
@@ -30,12 +33,21 @@ tile_set = ExtResource("2_6y2q1")
 format = 2
 layer_0/name = "ground"
 layer_0/y_sort_enabled = true
-layer_0/tile_data = PackedInt32Array(8, 524294, 0, 65544, 524294, 1, 131080, 524294, 2, 9, 589830, 0, 65545, 589830, 1, 131081, 589830, 2, 196608, 6, 3, 262144, 6, 4, 196609, 65542, 3, 262145, 65542, 4, 196610, 131078, 3, 262146, 131078, 4, 196611, 196614, 3, 262147, 196614, 4, 196612, 262150, 3, 262148, 262150, 4, 196613, 327686, 3, 262149, 327686, 4, 196614, 393222, 3, 262150, 393222, 4, 196615, 458758, 3, 262151, 458758, 4, 196616, 524294, 3, 262152, 524294, 4, 196617, 589830, 3, 262153, 589830, 4, 196618, 655366, 3, 262154, 655366, 4)
+layer_0/tile_data = PackedInt32Array(8, 524294, 0, 65544, 524294, 1, 131080, 524294, 2, 196608, 6, 3, 262144, 6, 4, 196609, 65542, 3, 262145, 65542, 4, 196610, 131078, 3, 262146, 131078, 4, 196611, 196614, 3, 262147, 196614, 4, 196612, 262150, 3, 262148, 262150, 4, 196613, 327686, 3, 262149, 327686, 4, 196614, 393222, 3, 262150, 393222, 4, 196615, 458758, 3, 262151, 458758, 4, 196616, 524294, 3, 262152, 524294, 4, 196617, 589830, 3, 262153, 589830, 4, 196618, 655366, 3, 262154, 655366, 4)
 layer_1/name = "ysort"
 layer_1/y_sort_enabled = true
-layer_1/tile_data = PackedInt32Array(0, 6, 0, 65536, 6, 1, 131072, 6, 2, 1, 65542, 0, 65537, 65542, 1, 131073, 65542, 2, 2, 131078, 0, 65538, 131078, 1, 131074, 131078, 2, 3, 196614, 0, 65539, 196614, 1, 131075, 196614, 2, 4, 262150, 0, 65540, 262150, 1, 131076, 262150, 2, 5, 327686, 0, 65541, 327686, 1, 131077, 327686, 2, 6, 393222, 0, 65542, 393222, 1, 131078, 393222, 2, 7, 458758, 0, 65543, 458758, 1, 131079, 458758, 2, 10, 655366, 0, 65546, 655366, 1, 131082, 655366, 2)
+layer_1/tile_data = PackedInt32Array(0, 6, 0, 65536, 6, 1, 131072, 6, 2, 1, 65542, 0, 65537, 65542, 1, 131073, 65542, 2, 2, 131078, 0, 65538, 131078, 1, 131074, 131078, 2, 3, 196614, 0, 65539, 196614, 1, 131075, 196614, 2, 4, 262150, 0, 65540, 262150, 1, 131076, 262150, 2, 5, 327686, 0, 65541, 327686, 1, 131077, 327686, 2, 6, 393222, 0, 65542, 393222, 1, 131078, 393222, 2, 7, 458758, 0, 65543, 458758, 1, 131079, 458758, 2, 10, 655366, 0, 65546, 655366, 1, 131082, 655366, 2, 131081, 196608, 4, 65545, 196608, 4, 9, 196608, 4)
 layer_2/name = "interactables"
 layer_2/tile_data = PackedInt32Array()
 
 [node name="playercharacter" parent="." instance=ExtResource("3_8muit")]
-position = Vector2(10, 66)
+position = Vector2(136, 18)
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(144, 1.5)
+shape = SubResource("RectangleShape2D_a0qmj")
+
+[connection signal="body_entered" from="Area2D" to="playercharacter" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="playercharacter" method="_on_area_2d_body_exited"]

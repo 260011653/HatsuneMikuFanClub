@@ -6,6 +6,8 @@ var nav_active: bool  = false #is pathfinding active? #RETIRED
 var current_scene_name : String = ""
 var current_path_to_move = []
 var current_pos = []
+var is_in_area = false
+
 #@onready var navigation_agent: NavigationAgent2D = $NavigationAgent2D
 
 func _ready():
@@ -27,8 +29,11 @@ func _unhandled_input(event: InputEvent) -> void:
 			bfs_move(get_global_mouse_position())
 			#navigation_agent.target_position = get_global_mouse_position()
 			nav_active = true
-			
-
+	
+func _input(ev):
+	if Input.is_action_just_pressed("Interact"):
+		if is_in_area:
+			switch_scene()
 			
 #func check_scene_exit(curr_scene):
 	#
@@ -195,17 +200,32 @@ func play_anim(movement):
 		elif movement == false:
 			anim.play("idle_down")
 
+func switch_scene():
+	var pos = [int(roundf(global_position.x/16 - 0.5)), int(roundf(global_position.y - 0.5)/16)]
+	#print(SceneTransition.transition_conditions["reception"][[8,0]][0])
+	SceneTransition.change_scene(SceneTransition.transition_conditions[current_scene_name][pos][0],SceneTransition.transition_conditions[current_scene_name][pos][1]) #round player pos to whole number])
+	print("entered")
 
 func _on_area_2d_body_entered(body):
 	if body.get_name() == "playercharacter":
-		var pos = [int(roundf(global_position.x/16 - 0.5)), int(roundf(global_position.y - 0.5)/16)]
-		#print(SceneTransition.transition_conditions["reception"][[8,0]][0])
-		SceneTransition.change_scene(SceneTransition.transition_conditions[current_scene_name][pos][0],SceneTransition.transition_conditions[current_scene_name][pos][1]) #round player pos to whole number])
-		print("entered")
+		switch_scene()
 	
+	
+func _on_area_2d_2_body_entered(body):
+	if body.get_name() == "playercharacter":
+		$RichTextLabel/AnimationPlayer2.play("popup")
+		print("entry")
+		is_in_area = true
+		#if SceneTransition.transition_conditions[current_scene_name][pos][1] == "interactive":
+			#SceneTransition.change_scene(SceneTransition.transition_conditions[current_scene_name][pos][0],SceneTransition.transition_conditions[current_scene_name][pos][1]) #round player pos to whole number])
+			#print("entered")
+
 func _on_area_2d_body_exited(body):
-	pass # Replace with function body.
+	pass
 
 
-func _on_area_2d_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):
-	pass # Replace with function body.
+func _on_area_2d_2_body_exited(body):
+	if body.get_name() == "playercharacter":
+		$RichTextLabel/AnimationPlayer2.play_backwards("popup")
+		print("exit")
+		is_in_area = false

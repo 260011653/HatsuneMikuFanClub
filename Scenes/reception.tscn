@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://d0bry5suudu50"]
+[gd_scene load_steps=6 format=3 uid="uid://0utaa34d1sac"]
 
 [ext_resource type="Script" path="res://Scripts/sceneloader.gd" id="1_dchcm"]
 [ext_resource type="Texture2D" uid="uid://803yb07wdkcn" path="res://Art/background/3840x2160-black-solid-color-background.jpg" id="1_i0n5k"]

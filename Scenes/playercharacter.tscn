@@ -1,7 +1,8 @@
-[gd_scene load_steps=25 format=3 uid="uid://ce2b4mv8y2x08"]
+[gd_scene load_steps=26 format=3 uid="uid://ce2b4mv8y2x08"]
 
 [ext_resource type="Script" path="res://Scripts/playercharacter.gd" id="1_bjmri"]
 [ext_resource type="Texture2D" uid="uid://cv3beb31h0ejl" path="res://Art/player/student_spritesheet_walk_fixed_right.png" id="2_xqnlf"]
+[ext_resource type="PackedScene" uid="uid://d012p5hqlkg8p" path="res://Scenes/popup.tscn" id="3_thsg2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nqfdd"]
 atlas = ExtResource("2_xqnlf")
@@ -191,6 +192,12 @@ radius = 5.09902
 
 [node name="playercharacter" type="CharacterBody2D"]
 script = ExtResource("1_bjmri")
+
+[node name="RichTextLabel" parent="." instance=ExtResource("3_thsg2")]
+offset_left = -25.0
+offset_top = -33.0
+offset_right = 104.0
+offset_bottom = 7.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ral6h")

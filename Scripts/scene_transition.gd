@@ -13,7 +13,11 @@ const transition_conditions = {
 	[16,0]: ["level1.tscn","down"]
 	},
 	"level3": {
-	[16,0]: ["level2.tscn","down"]
+	[16,0]: ["level2.tscn","down"],
+	[20,3]: ["classroom.tscn", "door"]
+	},
+	"classroom": {
+	[1,12]: ["level3.tscn","door"]
 	}
 	
 }
@@ -32,6 +36,10 @@ const scene_starting_positions = {
 	},
 	"level3": {
 		"up": Vector2(264,16),
+		"door": Vector2(328,48)
+	},
+	"classroom": {
+		"door": Vector2(24,198)
 	}
 }
 

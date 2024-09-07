@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://cqmmki0ubiq7c"]
+[gd_scene load_steps=7 format=3 uid="uid://cqmmki0ubiq7c"]
 
 [ext_resource type="Texture2D" uid="uid://803yb07wdkcn" path="res://Art/background/3840x2160-black-solid-color-background.jpg" id="1_61tk5"]
 [ext_resource type="Script" path="res://Scripts/sceneloader.gd" id="1_g5rtb"]
@@ -6,7 +6,10 @@
 [ext_resource type="PackedScene" uid="uid://ce2b4mv8y2x08" path="res://Scenes/playercharacter.tscn" id="3_sfdeq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_golmv"]
-size = Vector2(32, 13)
+size = Vector2(31, 13)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o3asp"]
+size = Vector2(8, 15)
 
 [node name="level3" type="Node"]
 
@@ -15,10 +18,10 @@ texture_filter = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -2080.0
-offset_top = -1563.0
-offset_right = -160.0
-offset_bottom = -483.0
+offset_left = -2534.0
+offset_top = -1671.0
+offset_right = -614.0
+offset_bottom = -591.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(5, 5)
@@ -50,4 +53,12 @@ position = Vector2(264, 14)
 position = Vector2(8, -12)
 shape = SubResource("RectangleShape2D_golmv")
 
+[node name="Area2D2" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
+position = Vector2(328, 47.5)
+shape = SubResource("RectangleShape2D_o3asp")
+
 [connection signal="body_entered" from="Area2D" to="playercharacter" method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="Area2D2" to="playercharacter" method="_on_area_2d_2_body_entered"]
+[connection signal="body_exited" from="Area2D2" to="playercharacter" method="_on_area_2d_2_body_exited"]

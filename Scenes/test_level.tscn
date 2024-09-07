@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://buxg6bxiffbfj"]
+[gd_scene load_steps=8 format=3 uid="uid://fi1idc7hebbh"]
 
 [ext_resource type="Texture2D" uid="uid://803yb07wdkcn" path="res://Art/background/3840x2160-black-solid-color-background.jpg" id="1_n36jp"]
 [ext_resource type="Texture2D" uid="uid://c4t7pntwljauf" path="res://Art/tilemaps/hallway.png" id="2_ppgqg"]

@@ -16,7 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://dpevno03iqvuo" path="res://Art/gui_mana.png" id="13_jfwjv"]
 [ext_resource type="Texture2D" uid="uid://bi2hiv412o068" path="res://Art/gui_textbox.png" id="14_a2byv"]
 
-[node name="Node" type="Node"]
+[node name="Node2" type="Node"]
 script = ExtResource("1_nnpe2")
 
 [node name="TextureRect" type="TextureRect" parent="."]

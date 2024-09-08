@@ -22,19 +22,25 @@ func _physics_process(delta):
 	move_and_slide()
 	#player_movement(delta)
 	
+var click_cursor = preload("res://Art/background/steps.png")
+var normal_cursor = preload("res://Art/background/target_a.png")
 	#handle mouse button inputs
-func _unhandled_input(event: InputEvent) -> void:
+func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
+		print("detected")
 		if event.pressed and event.button_index == MOUSE_BUTTON_RIGHT:
+			print("clicked")
+			Input.set_custom_mouse_cursor(click_cursor)
 			bfs_move(get_global_mouse_position())
 			#navigation_agent.target_position = get_global_mouse_position()
 			nav_active = true
-	
-func _input(ev):
+		elif event.is_released() and event.button_index == MOUSE_BUTTON_RIGHT:
+			Input.set_custom_mouse_cursor(normal_cursor)
 	if Input.is_action_just_pressed("Interact"):
 		if is_in_area:
 			switch_scene()
 			
+	
 #func check_scene_exit(curr_scene):
 	#
 			
@@ -60,9 +66,10 @@ func movement_control(delta):
 	else:
 		velocity = Vector2.ZERO
 		
+		
 func bfs_move(mouse_pos) -> void: #breadth first search guarantees shortest path in unweighted graph!
 	var adj = GlobalUtil.load_mesh(current_scene_name)
-	
+
 	#print(adj)
 	#TESTED OK (it wasnt ok)
 	#///////////////////
@@ -70,6 +77,8 @@ func bfs_move(mouse_pos) -> void: #breadth first search guarantees shortest path
 	#var testsource = [round(global_position.x/16 - 0.5), round(global_position.y/16 - 0.5)]
 	var source = [int(round(global_position.x/16 - 0.5)), int(round(global_position.y/16))] #round player pos to whole number
 	var target = [mouse_pos.x / 16 - 0.5, mouse_pos.y / 16 - 0.5]
+	
+	print(target)
 	
 	print(source)
 	
@@ -229,3 +238,10 @@ func _on_area_2d_2_body_exited(body):
 		$RichTextLabel/AnimationPlayer2.play_backwards("popup")
 		print("exit")
 		is_in_area = false
+
+func _on_fight_receptionist_body_entered(body):
+	if body.get_name() == "playercharacter":
+		var pos = [int(roundf(global_position.x/16 - 0.5)), int(roundf(global_position.y - 0.5)/16)]
+	#print(SceneTransition.transition_conditions["reception"][[8,0]][0])
+		SceneTransition.change_scene("Receptionist.tscn","fight",current_pos) #round player pos to whole number])
+

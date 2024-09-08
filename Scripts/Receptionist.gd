@@ -16,7 +16,7 @@ func _process(delta):
 		get_tree().change_scene_to_file("res://Scenes/game_over.tscn")
 	if RHealth <= 0:
 		await get_tree().create_timer(2).timeout 
-		get_tree().change_scene_to_file("res://Scenes/win.tscn")
+		SceneTransition.change_scene("level1.tscn","fight") #round player pos to whole number])
 
 
 func _ready():

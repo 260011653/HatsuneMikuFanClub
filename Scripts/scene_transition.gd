@@ -24,7 +24,8 @@ const transition_conditions = {
 
 const scene_starting_positions = {
 	"reception": {
-		"down": Vector2(136,18)
+		"down": Vector2(136,18),
+		"fight": Vector2(91,61)
 	},
 	"level1": {
 		"up": Vector2(264,16),
@@ -43,14 +44,32 @@ const scene_starting_positions = {
 	}
 }
 
+const list_of_quotes = ["Average Calculator!", "Rubber Duckies...", "Good afternoon...", "I like muffins", "ChatGPT", "Pity variable"]
+
 
 var last_direction = ""
 
-func change_scene(target: String, direction: String) -> void:
+func change_scene(target: String, direction: String, last_player_pos = null) -> void:
+	var rng = RandomNumberGenerator.new()
+	var rando = rng.randi_range(0, list_of_quotes.size()-1)
+	$TextureRect/Label.text = '"' + list_of_quotes[rando] + '"'
 	SceneTransition.last_direction = direction
 	var target_path = "res://Scenes/"+target
-	$AnimationPlayer.play('DISSOLVE')
-	await $AnimationPlayer.animation_finished
-	get_tree().change_scene_to_file(target_path)
-	$AnimationPlayer.play_backwards('DISSOLVE')
+	if direction == "fight":
+		GlobalUtil.last_player_pos = last_player_pos
+		$AnimationPlayer.play('FIGHT')
+		$TextureRect/AnimatedSprite2D.play("load")
+		await $AnimationPlayer.animation_finished
+		get_tree().change_scene_to_file(target_path)
+		rando = rng.randf_range(0.8,2) 
+		await get_tree().create_timer(rando).timeout
+		$AnimationPlayer.play_backwards('FIGHT')
+	else:
+		$AnimationPlayer.play('DISSOLVE')
+		$TextureRect/AnimatedSprite2D.play("load")
+		await $AnimationPlayer.animation_finished
+		get_tree().change_scene_to_file(target_path)
+		rando = rng.randf_range(0.8,2) 
+		await get_tree().create_timer(rando).timeout
+		$AnimationPlayer.play_backwards('DISSOLVE')
 	

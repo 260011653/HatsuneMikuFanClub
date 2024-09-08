@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://0utaa34d1sac"]
+[gd_scene load_steps=7 format=3 uid="uid://0utaa34d1sac"]
 
 [ext_resource type="Script" path="res://Scripts/sceneloader.gd" id="1_dchcm"]
 [ext_resource type="Texture2D" uid="uid://803yb07wdkcn" path="res://Art/background/3840x2160-black-solid-color-background.jpg" id="1_i0n5k"]
@@ -7,6 +7,9 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a0qmj"]
 size = Vector2(32, 13)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fsqvc"]
+size = Vector2(20, 79)
 
 [node name="reception" type="Node"]
 
@@ -49,5 +52,12 @@ position = Vector2(136, 18)
 position = Vector2(144, 1.5)
 shape = SubResource("RectangleShape2D_a0qmj")
 
+[node name="FightReceptionist" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FightReceptionist"]
+position = Vector2(65, 39.5)
+shape = SubResource("RectangleShape2D_fsqvc")
+
 [connection signal="body_entered" from="Area2D" to="playercharacter" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="playercharacter" method="_on_area_2d_body_exited"]
+[connection signal="body_entered" from="FightReceptionist" to="playercharacter" method="_on_fight_receptionist_body_entered"]

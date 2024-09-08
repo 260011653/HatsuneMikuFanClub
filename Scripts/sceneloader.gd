@@ -32,6 +32,8 @@ func _ready():
 		player.position = SceneTransition.scene_starting_positions[get_tree().current_scene.name]["up"] 
 	elif SceneTransition.last_direction == "down":
 		player.position = SceneTransition.scene_starting_positions[get_tree().current_scene.name]["down"] 
+	elif SceneTransition.last_direction == "fight":
+		player.position = SceneTransition.scene_starting_positions[get_tree().current_scene.name]["fight"] 
 	
 	if GlobalUtil.first_spawn:
 		player.position = Vector2(10,66)
@@ -58,5 +60,6 @@ func _ready():
 	
 	#var bruh = GlobalUtil.load_mesh(get_tree().current_scene.name)
 	#print(bruh)
+
 
 

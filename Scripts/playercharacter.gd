@@ -28,7 +28,7 @@ var normal_cursor = preload("res://Art/background/target_a.png")
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		print("detected")
-		if event.pressed and event.button_index == MOUSE_BUTTON_RIGHT:
+		if event.pressed and event.button_index == MOUSE_BUTTON_RIGHT and GlobalUtil.disable_movement == false:
 			print("clicked")
 			Input.set_custom_mouse_cursor(click_cursor)
 			bfs_move(get_global_mouse_position())
@@ -241,7 +241,27 @@ func _on_area_2d_2_body_exited(body):
 
 func _on_fight_receptionist_body_entered(body):
 	if body.get_name() == "playercharacter":
+		GlobalUtil.disable_movement = true
+		current_path_to_move = []
 		var pos = [int(roundf(global_position.x/16 - 0.5)), int(roundf(global_position.y - 0.5)/16)]
 	#print(SceneTransition.transition_conditions["reception"][[8,0]][0])
 		SceneTransition.change_scene("Receptionist.tscn","fight",current_pos) #round player pos to whole number])
 
+
+
+func _on_fight_wheely_body_entered(body):
+	if body.get_name() == "playercharacter":
+		GlobalUtil.disable_movement = true
+		current_path_to_move = []
+		var pos = [int(roundf(global_position.x/16 - 0.5)), int(roundf(global_position.y - 0.5)/16)]
+	#print(SceneTransition.transition_conditions["reception"][[8,0]][0])
+		SceneTransition.change_scene("Wheely.tscn","fight",current_pos) #round player pos to whole number])
+
+
+func _on_fight_printer_body_entered(body):
+	if body.get_name() == "playercharacter":
+		current_path_to_move = []
+		GlobalUtil.disable_movement = true
+		var pos = [int(roundf(global_position.x/16 - 0.5)), int(roundf(global_position.y - 0.5)/16)]
+	#print(SceneTransition.transition_conditions["reception"][[8,0]][0])
+		SceneTransition.change_scene("Printer.tscn","fight",current_pos) #round player pos to whole number])

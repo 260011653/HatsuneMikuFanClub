@@ -9,7 +9,7 @@
 size = Vector2(32, 13)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fsqvc"]
-size = Vector2(20, 79)
+size = Vector2(20, 78)
 
 [node name="reception" type="Node"]
 
@@ -44,7 +44,7 @@ layer_2/name = "interactables"
 layer_2/tile_data = PackedInt32Array()
 
 [node name="playercharacter" parent="." instance=ExtResource("3_8muit")]
-position = Vector2(136, 18)
+position = Vector2(114, 62)
 
 [node name="Area2D" type="Area2D" parent="."]
 
@@ -55,7 +55,7 @@ shape = SubResource("RectangleShape2D_a0qmj")
 [node name="FightReceptionist" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FightReceptionist"]
-position = Vector2(65, 39.5)
+position = Vector2(65, 39)
 shape = SubResource("RectangleShape2D_fsqvc")
 
 [connection signal="body_entered" from="Area2D" to="playercharacter" method="_on_area_2d_body_entered"]

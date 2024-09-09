@@ -4,6 +4,16 @@ var first_spawn = true
 
 var last_player_pos = null
 
+var delete_fight_area = false
+
+var delete_wheely = false
+
+var delete_fight_area_name = ""
+
+var disable_movement = false
+
+
+
 func write_mesh(meshArr,savename) -> void:
 	
 	var file = FileAccess.open("res://Scripts/meshes.gd", FileAccess.READ_WRITE)

@@ -34,10 +34,26 @@ func _ready():
 		player.position = SceneTransition.scene_starting_positions[get_tree().current_scene.name]["down"] 
 	elif SceneTransition.last_direction == "fight":
 		player.position = SceneTransition.scene_starting_positions[get_tree().current_scene.name]["fight"] 
+	elif SceneTransition.last_direction == "door":
+		player.position = SceneTransition.scene_starting_positions[get_tree().current_scene.name]["door"] 
 	
 	if GlobalUtil.first_spawn:
 		player.position = Vector2(10,66)
 		GlobalUtil.first_spawn = false
+	
+	if GlobalUtil.delete_wheely and get_tree().current_scene.name == "level1":
+		var collision_shape_2d = $"../FightWheely/CollisionShape2D"
+		collision_shape_2d.disabled = PROCESS_MODE_DISABLED
+		$"../wheeliebagkid".visible = false
+		$"../wheeliebag".global_position = Vector2(211,59)
+		$"../wheeliebag".rotation = 90
+		
+	if GlobalUtil.delete_fight_area:
+		var delete_path = "../"+str(GlobalUtil.delete_fight_area_name) + "/" + "CollisionShape2D"
+		var fight_area = get_node(delete_path)
+		fight_area.disabled = PROCESS_MODE_DISABLED
+		GlobalUtil.delete_fight_area = false
+
 	#get cells and create balanced K-tree
 	var cell_points = tile_map.get_used_cells(0)
 	cell_points = GlobalUtil.vector_to_array(cell_points)

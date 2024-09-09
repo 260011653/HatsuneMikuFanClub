@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bqrbvma6mb672"]
+[gd_scene load_steps=8 format=3 uid="uid://bqrbvma6mb672"]
 
 [ext_resource type="Script" path="res://Scripts/sceneloader.gd" id="1_b7x1o"]
 [ext_resource type="Texture2D" uid="uid://803yb07wdkcn" path="res://Art/background/3840x2160-black-solid-color-background.jpg" id="1_triu7"]
@@ -8,6 +8,9 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a2lq4"]
 size = Vector2(64, 12)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lmpgt"]
+size = Vector2(66, 2)
 
 [node name="level2" type="Node"]
 
@@ -56,5 +59,12 @@ scale = Vector2(0.907608, 0.907608)
 position = Vector2(256, 0)
 shape = SubResource("RectangleShape2D_a2lq4")
 
+[node name="FightPrinter" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FightPrinter"]
+position = Vector2(290, 51)
+shape = SubResource("RectangleShape2D_lmpgt")
+
 [connection signal="body_entered" from="Area2D" to="playercharacter" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="playercharacter" method="_on_area_2d_body_exited"]
+[connection signal="body_entered" from="FightPrinter" to="playercharacter" method="_on_fight_printer_body_entered"]

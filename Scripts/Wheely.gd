@@ -1,8 +1,9 @@
 extends Node
 var rng =RandomNumberGenerator.new()
 var Student = Player.new(40,200,"John")
-var RHealth = 500
-var Max = 500
+var RHealth = 10 #500
+var Max = 10 #500
+var Died = false
 #func _ready():
 
 
@@ -16,8 +17,16 @@ func _process(delta):
 		get_tree().change_scene_to_file("res://Scenes/game_over.tscn")
 	if RHealth <= 0:
 		$EnemyDisplay.text = "Wheely Bag Kid: 0"
-		await get_tree().create_timer(2).timeout 
-		get_tree().change_scene_to_file("res://Scenes/win.tscn")
+
+		if Died == false:
+			GlobalUtil.delete_wheely = true
+			Died = true
+			await get_tree().create_timer(2).timeout 
+			print("died")
+			GlobalUtil.delete_fight_area_name = "FightWheely"
+			GlobalUtil.delete_fight_area = true
+			
+			SceneTransition.change_scene("level1.tscn","fight") #round player pos to whole number])
 
 
 

@@ -14,7 +14,10 @@ const transition_conditions = {
 	},
 	"level3": {
 	[16,0]: ["level2.tscn","down"],
-	[20,3]: ["classroom.tscn", "door"]
+	[20,3]: ["classroom.tscn", "door"],
+	[21,3]: ["classroom.tscn", "door"],
+	[19,3]: ["classroom.tscn", "door"],
+	[20,4]: ["classroom.tscn", "door"]
 	},
 	"classroom": {
 	[1,12]: ["level3.tscn","door"]

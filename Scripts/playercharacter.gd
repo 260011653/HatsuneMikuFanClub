@@ -38,6 +38,9 @@ func _input(event: InputEvent) -> void:
 			Input.set_custom_mouse_cursor(normal_cursor)
 	if Input.is_action_just_pressed("Interact"):
 		if is_in_area:
+			current_path_to_move = []
+			current_dir = "up"
+			GlobalUtil.disable_movement = true
 			switch_scene()
 			
 	
@@ -222,6 +225,7 @@ func _on_area_2d_body_entered(body):
 	
 func _on_area_2d_2_body_entered(body):
 	if body.get_name() == "playercharacter":
+		$RichTextLabel.text = "[imgresize={30}]res://Art/z_keycap.png[/imgresize] Open door"
 		$RichTextLabel/AnimationPlayer2.play("popup")
 		print("entry")
 		is_in_area = true

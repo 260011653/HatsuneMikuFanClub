@@ -38,8 +38,14 @@ func _ready():
 		player.position = SceneTransition.scene_starting_positions[get_tree().current_scene.name]["door"] 
 	
 	if GlobalUtil.first_spawn:
+		$"../playercharacter/RichTextLabel".text = "Right Click to move"
+		$"../playercharacter/RichTextLabel/AnimationPlayer2".play("popup")
 		player.position = Vector2(10,66)
+		GlobalUtil.disable_movement = true
 		GlobalUtil.first_spawn = false
+		await get_tree().create_timer(3).timeout
+		$"../playercharacter/RichTextLabel/AnimationPlayer2".play_backwards("popup")
+		GlobalUtil.disable_movement = false
 	
 	if GlobalUtil.delete_wheely and get_tree().current_scene.name == "level1":
 		var collision_shape_2d = $"../FightWheely/CollisionShape2D"

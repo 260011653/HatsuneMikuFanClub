@@ -42,19 +42,19 @@ func EnemAttack():
 		match Move:
 			1:
 				var damage = rng.randi_range(50,60)
-				$ELog.text = "Wheely Bag Kid swings his bag\ninto your shin\n"+str(damage)+" damage"
+				$ELog.text = "Wheely Bag Kid\nswings his bag\ninto your shin\n"+str(damage)+" damage"
 				Student.Damage(damage)
 			2:
 				var damage = rng.randi_range(30,40)
-				$ELog.text = "Wheely Bag Kid trips you\n"+str(damage)+" damage"
+				$ELog.text = "Wheely Bag Kid\ntrips you\n"+str(damage)+" damage"
 				Student.Damage(damage)
 			3:
 				var damage = rng.randi_range(20,30)
-				$ELog.text = "Wheely Bag Kid attacks dealing \n"+str(damage)+" damage"
+				$ELog.text = "Wheely Bag Kid\nattacks dealing \n"+str(damage)+" damage"
 				Student.Damage(damage)
 			4:
 				var damage = rng.randi_range(20,30)
-				$ELog.text = "Wheely Bag Kid attacks dealing \n"+str(damage)+" damage"
+				$ELog.text = "Wheely Bag Kid\nattacks dealing \n"+str(damage)+" damage"
 				Student.Damage(damage)
 			5:
 				var Heal = rng.randi_range(50,150)
@@ -63,7 +63,7 @@ func EnemAttack():
 					RHealth = Max
 				else:
 					RHealth += Heal
-				$ELog.text = "Wheely Bag Kid puffs on a vape \n"+str(Heal)+" Health"
+				$ELog.text = "Wheely Bag Kid\npuffs on a vape \n"+str(Heal)+" Health"
 		$Attack.show()
 		$Magic.show()
 

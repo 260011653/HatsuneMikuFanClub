@@ -1,6 +1,6 @@
 extends Node
 var rng =RandomNumberGenerator.new()
-var Student = Player.new(600,500,"John")
+var Student = Player.new(60,500,"John")
 var RHealth = 1000 #1000
 var Max = 1000 #1000
 var Died = false

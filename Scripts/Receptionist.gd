@@ -16,6 +16,7 @@ func _process(delta):
 		await get_tree().create_timer(2).timeout 
 		get_tree().change_scene_to_file("res://Scenes/game_over.tscn")
 	if RHealth <= 0:
+		$EnemyDisplay.text = "Receptionist: 0"
 		if Died == false:
 			Died = true
 			await get_tree().create_timer(2).timeout 
@@ -53,6 +54,8 @@ func EnemAttack():
 			await get_tree().create_timer(1).timeout 
 			$ELog.text = "Try pressing magic and using\none of your special attacks,\nthese deal more damage than a\nnormal attack but cost mana"
 	Move += 1
+	$Magic.show()
+	$Attack.show()
 
 
 func _on_attack_pressed():
@@ -62,8 +65,7 @@ func _on_attack_pressed():
 	$Log.text = "You punch dealing: \n"+str(damage)+" Damage"
 	RHealth -= damage
 	EnemAttack()
-	$Attack.show()
-	$Magic.show()
+
 
 
 func _on_magic_pressed():
@@ -86,8 +88,6 @@ func _on_heal_pressed():
 		$Back.hide()
 		$Run.hide()
 		EnemAttack()
-		$Attack.show()
-		$Magic.show()
 		$Log.text = "You heal for:\n"+str(check)
 	else:
 		$Log.text = "You don't have the\nmana for that"
@@ -105,8 +105,6 @@ func _on_sp_1_pressed():
 			$Log.text = "You throw\nyour computer: \n"+str(RHealth)+" Damage"
 			RHealth -= RHealth
 		EnemAttack()
-		$Attack.show()
-		$Magic.show()
 	else:
 		$Log.text = "You don't have the\nmana for that"
 
@@ -130,8 +128,6 @@ func _on_back_pressed():
 	$Sp1.hide()
 	$Sp2.hide()
 	$Back.hide()
-	$Attack.show()
-	$Magic.show()
 	$Run.hide()
 	
 func _on_run_pressed():

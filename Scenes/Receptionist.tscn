@@ -115,6 +115,7 @@ theme_override_fonts/font = ExtResource("2_j6ool")
 theme_override_font_sizes/font_size = 50
 
 [node name="Attack" type="TextureButton" parent="."]
+visible = false
 offset_left = 361.0
 offset_top = 667.0
 offset_right = 1552.0
@@ -123,6 +124,7 @@ texture_normal = ExtResource("3_3jl6n")
 stretch_mode = 5
 
 [node name="Magic" type="TextureButton" parent="."]
+visible = false
 offset_left = 364.0
 offset_top = 878.0
 offset_right = 1549.0

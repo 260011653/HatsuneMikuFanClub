@@ -45,7 +45,8 @@ const scene_starting_positions = {
 		"door": Vector2(328,48)
 	},
 	"classroom": {
-		"door": Vector2(24,198)
+		"door": Vector2(24,198),
+		"fight": Vector2(61,73)
 	}
 }
 

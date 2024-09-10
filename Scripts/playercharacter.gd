@@ -37,11 +37,12 @@ func _input(event: InputEvent) -> void:
 		elif event.is_released() and event.button_index == MOUSE_BUTTON_RIGHT:
 			Input.set_custom_mouse_cursor(normal_cursor)
 	if Input.is_action_just_pressed("Interact"):
-		if is_in_area:
+		if is_in_area and !GlobalUtil.disable_movement:
 			current_path_to_move = []
 			current_dir = "up"
-			
+			GlobalUtil.disable_movement = true
 			switch_scene()
+			
 			
 	
 #func check_scene_exit(curr_scene):
@@ -269,3 +270,12 @@ func _on_fight_printer_body_entered(body):
 		var pos = [int(roundf(global_position.x/16 - 0.5)), int(roundf(global_position.y - 0.5)/16)]
 	#print(SceneTransition.transition_conditions["reception"][[8,0]][0])
 		SceneTransition.change_scene("Printer.tscn","fight",current_pos) #round player pos to whole number])
+
+
+func _on_fight_van_tonder_body_entered(body):
+	if body.get_name() == "playercharacter":
+		current_path_to_move = []
+		GlobalUtil.disable_movement = true
+		var pos = [int(roundf(global_position.x/16 - 0.5)), int(roundf(global_position.y - 0.5)/16)]
+	#print(SceneTransition.transition_conditions["reception"][[8,0]][0])
+		SceneTransition.change_scene("Tonder.tscn","fight",current_pos) #round player pos to whole number])

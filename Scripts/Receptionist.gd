@@ -3,6 +3,7 @@ var Student = Player.new(40,200,"John")
 var RHealth = 999
 var rng =RandomNumberGenerator.new()
 var Move = 0
+var Died = false
 #func _ready():
 
 
@@ -15,9 +16,15 @@ func _process(delta):
 		await get_tree().create_timer(2).timeout 
 		get_tree().change_scene_to_file("res://Scenes/game_over.tscn")
 	if RHealth <= 0:
-		await get_tree().create_timer(2).timeout 
-		get_tree().change_scene_to_file("res://Scenes/win.tscn")
-
+		if Died == false:
+			Died = true
+			await get_tree().create_timer(2).timeout 
+			print("died")
+			GlobalUtil.delete_fight_area = true
+			GlobalUtil.delete_fight_area_name = "FightReceptionist"
+			SceneTransition.change_scene("reception.tscn","fight") #round player pos to whole number])
+			
+		
 
 func _ready():
 	EnemAttack()
@@ -129,3 +136,7 @@ func _on_back_pressed():
 	
 func _on_run_pressed():
 	$Log.text = "You cannot run\nfrom this fight"
+
+
+func _on_audio_stream_player_finished():
+	$AudioStreamPlayer.play()

@@ -1,9 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://dypcdx7ceew6u"]
+[gd_scene load_steps=8 format=3 uid="uid://dypcdx7ceew6u"]
 
 [ext_resource type="Texture2D" uid="uid://607bldggtwst" path="res://Art/background/images.png" id="1_8gesd"]
 [ext_resource type="Script" path="res://Scripts/sceneloader.gd" id="1_sv6xm"]
 [ext_resource type="TileSet" uid="uid://cya47ra4sng0t" path="res://Scenes/tileset_game.tres" id="2_h3a0y"]
 [ext_resource type="PackedScene" uid="uid://ce2b4mv8y2x08" path="res://Scenes/playercharacter.tscn" id="3_dcu8p"]
+[ext_resource type="Texture2D" uid="uid://dbyemlcdqihdw" path="res://Art/mrvantonder.png" id="5_abqgg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pgjtc"]
+size = Vector2(20, 6)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0ngpn"]
+radius = 36.0139
 
 [node name="classroom" type="Node"]
 
@@ -38,4 +45,24 @@ layer_2/name = "interactables"
 layer_2/tile_data = PackedInt32Array(262146, 327688, 5, 393218, 262152, 4, 458754, 262152, 5, 524290, 262152, 6, 589826, 262152, 4, 655362, 262152, 5, 720898, 262152, 6, 262155, 262152, 4, 327691, 262152, 5, 393227, 262152, 6, 262152, 262152, 4, 327688, 262152, 5, 393224, 262152, 6, 262149, 262152, 4, 327685, 262152, 5, 393221, 262152, 6, 458757, 262152, 4, 524293, 262152, 5, 589829, 262152, 6, 655365, 262152, 4, 720901, 262152, 5, 458760, 262152, 4, 524296, 262152, 5, 589832, 262152, 6, 655368, 262152, 4, 720904, 262152, 5, 458763, 262152, 4, 524299, 262152, 5, 589835, 262152, 6, 655371, 262152, 4, 720907, 262152, 5, 393219, 327688, 4, 458755, 327688, 4, 589827, 327688, 4, 655363, 327688, 4, 262150, 327688, 4, 327686, 327688, 4, 458758, 327688, 4, 524294, 327688, 4, 655366, 327688, 4, 720902, 327688, 4, 655369, 327688, 4, 720905, 327688, 4, 262153, 327688, 4, 327689, 327688, 4, 262156, 327688, 4, 327692, 327688, 4, 655372, 327688, 4, 720908, 327688, 4, 458764, 327688, 4, 524300, 327688, 4, 196612, 458760, 4, 196611, 458760, 4, 786437, 262152, 6, 786440, 262152, 6, 786443, 262152, 6, 458761, 327688, 4)
 
 [node name="playercharacter" parent="." instance=ExtResource("3_dcu8p")]
-position = Vector2(24, 198)
+position = Vector2(24, 200)
+
+[node name="Mrvantonder" type="Sprite2D" parent="."]
+y_sort_enabled = true
+position = Vector2(21, 68)
+texture = ExtResource("5_abqgg")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(24, 215)
+shape = SubResource("RectangleShape2D_pgjtc")
+
+[node name="FightVanTonder" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FightVanTonder"]
+position = Vector2(21, 70)
+shape = SubResource("CircleShape2D_0ngpn")
+
+[connection signal="body_entered" from="Area2D" to="playercharacter" method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="FightVanTonder" to="playercharacter" method="_on_fight_van_tonder_body_entered"]

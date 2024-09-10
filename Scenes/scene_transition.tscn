@@ -1,0 +1,183 @@
+[gd_scene load_steps=16 format=3 uid="uid://d1h3bfahui2lq"]
+
+[ext_resource type="Script" path="res://Scripts/scene_transition.gd" id="1_klt4y"]
+[ext_resource type="Texture2D" uid="uid://c26d5hahjajnu" path="res://Art/background/van_tonder_poking.jpg" id="2_tqhxr"]
+[ext_resource type="Texture2D" uid="uid://c3fxunpx6ljgl" path="res://Art/background/All.png" id="3_6vn8h"]
+[ext_resource type="Texture2D" uid="uid://k5mi1k0ummvb" path="res://Art/mr_van_tonderangry.png" id="4_myoj5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_khah5"]
+atlas = ExtResource("3_6vn8h")
+region = Rect2(1072, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_60cr1"]
+atlas = ExtResource("3_6vn8h")
+region = Rect2(1040, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_riopw"]
+atlas = ExtResource("3_6vn8h")
+region = Rect2(1008, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j3j12"]
+atlas = ExtResource("3_6vn8h")
+region = Rect2(976, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3v2ji"]
+atlas = ExtResource("3_6vn8h")
+region = Rect2(944, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cym5r"]
+atlas = ExtResource("3_6vn8h")
+region = Rect2(912, 0, 32, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_quuhl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_khah5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_60cr1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_riopw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j3j12")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3v2ji")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cym5r")
+}],
+"loop": true,
+"name": &"load",
+"speed": 10.0
+}]
+
+[sub_resource type="Animation" id="Animation_xxkb2"]
+resource_name = "DISSOLVE"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.366021, 6.72717),
+"update": 0,
+"values": [Color(1, 1, 1, 0.278431), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TextureRect:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.183011, 0.757858),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 1300)]
+}
+
+[sub_resource type="Animation" id="Animation_ngy4q"]
+resource_name = "FIGHT"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect3:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 1000), Vector2(0, -500)]
+}
+
+[sub_resource type="Animation" id="Animation_1eabe"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TextureRect:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TextureRect3:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 1000)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_n7d2n"]
+_data = {
+"DISSOLVE": SubResource("Animation_xxkb2"),
+"FIGHT": SubResource("Animation_ngy4q"),
+"RESET": SubResource("Animation_1eabe")
+}
+
+[node name="scene_transition" type="CanvasLayer"]
+script = ExtResource("1_klt4y")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+offset_right = 2039.0
+offset_bottom = 1306.99
+rotation = 3.14159
+scale = Vector2(-1, 1)
+texture = ExtResource("2_tqhxr")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="TextureRect"]
+position = Vector2(1730, 335)
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_quuhl")
+animation = &"load"
+frame_progress = 0.325007
+
+[node name="Label" type="Label" parent="TextureRect"]
+layout_mode = 0
+offset_left = 1254.0
+offset_top = 1008.0
+offset_right = 1404.0
+offset_bottom = 1031.0
+rotation = 3.14159
+scale = Vector2(-4, 4)
+
+[node name="TextureRect3" type="TextureRect" parent="."]
+offset_top = 1000.0
+offset_right = 1804.0
+offset_bottom = 3583.0
+texture = ExtResource("4_myoj5")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_n7d2n")
+}

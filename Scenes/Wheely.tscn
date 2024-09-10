@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cane082o6ydy1"]
+[gd_scene load_steps=17 format=3 uid="uid://cane082o6ydy1"]
 
 [ext_resource type="Script" path="res://Scripts/Wheely.gd" id="1_nnpe2"]
 [ext_resource type="Texture2D" uid="uid://bljwwr3by46b" path="res://Art/f1_bg.png" id="2_eqo14"]
@@ -15,8 +15,9 @@
 [ext_resource type="Texture2D" uid="uid://bqdyp38w5mcqg" path="res://Art/gui_health.png" id="12_p1jwg"]
 [ext_resource type="Texture2D" uid="uid://dpevno03iqvuo" path="res://Art/gui_mana.png" id="13_jfwjv"]
 [ext_resource type="Texture2D" uid="uid://bi2hiv412o068" path="res://Art/gui_textbox.png" id="14_a2byv"]
+[ext_resource type="AudioStream" uid="uid://buv2srhev6lu" path="res://Music/wheeliebagkid_theme.mp3" id="16_lx40n"]
 
-[node name="Node" type="Node"]
+[node name="Node2" type="Node"]
 script = ExtResource("1_nnpe2")
 
 [node name="TextureRect" type="TextureRect" parent="."]
@@ -175,6 +176,10 @@ offset_bottom = 888.0
 theme_override_fonts/font = ExtResource("2_n27a1")
 theme_override_font_sizes/font_size = 50
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("16_lx40n")
+autoplay = true
+
 [connection signal="pressed" from="Attack" to="." method="_on_attack_pressed"]
 [connection signal="pressed" from="Magic" to="." method="_on_magic_pressed"]
 [connection signal="pressed" from="Heal" to="." method="_on_heal_pressed"]
@@ -182,3 +187,4 @@ theme_override_font_sizes/font_size = 50
 [connection signal="pressed" from="Sp2" to="." method="_on_sp_2_pressed"]
 [connection signal="pressed" from="Back" to="." method="_on_back_pressed"]
 [connection signal="pressed" from="Run" to="." method="_on_run_pressed"]
+[connection signal="finished" from="AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]

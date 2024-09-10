@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dlu8c8hg356ry"]
+[gd_scene load_steps=17 format=3 uid="uid://dlu8c8hg356ry"]
 
 [ext_resource type="Script" path="res://Scripts/Receptionist.gd" id="1_awdhf"]
 [ext_resource type="FontFile" uid="uid://yx8eo66u0ce3" path="res://pixel-comic-sans-undertale-sans-font.ttf" id="2_j6ool"]
@@ -15,8 +15,9 @@
 [ext_resource type="Texture2D" uid="uid://bqdyp38w5mcqg" path="res://Art/gui_health.png" id="12_0y3op"]
 [ext_resource type="Texture2D" uid="uid://dpevno03iqvuo" path="res://Art/gui_mana.png" id="13_spqrl"]
 [ext_resource type="Texture2D" uid="uid://bi2hiv412o068" path="res://Art/gui_textbox.png" id="14_vcfmr"]
+[ext_resource type="AudioStream" uid="uid://b350qguim6k" path="res://Music/receptionist_theme.mp3" id="16_xod17"]
 
-[node name="Node" type="Node"]
+[node name="Node2" type="Node"]
 script = ExtResource("1_awdhf")
 
 [node name="TextureRect" type="TextureRect" parent="."]
@@ -173,6 +174,10 @@ offset_bottom = 1068.0
 texture_normal = ExtResource("6_lycmj")
 stretch_mode = 4
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("16_xod17")
+autoplay = true
+
 [connection signal="pressed" from="Attack" to="." method="_on_attack_pressed"]
 [connection signal="pressed" from="Magic" to="." method="_on_magic_pressed"]
 [connection signal="pressed" from="Heal" to="." method="_on_heal_pressed"]
@@ -180,3 +185,4 @@ stretch_mode = 4
 [connection signal="pressed" from="Sp2" to="." method="_on_sp_2_pressed"]
 [connection signal="pressed" from="Back" to="." method="_on_back_pressed"]
 [connection signal="pressed" from="Run" to="." method="_on_run_pressed"]
+[connection signal="finished" from="AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]

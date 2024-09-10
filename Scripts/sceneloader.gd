@@ -4,6 +4,7 @@ extends Node
 # Called when the node enters the scene tree for the first time.
 @onready var player: CharacterBody2D = $"../playercharacter"
 
+		
 func create_balanced_ktree(tree,pointsAr) -> GlobalUtil.kTree: #pointsAr should be already X-sorted
 	#print(pointsAr)
 	#print(pointsAr.size())
@@ -59,7 +60,8 @@ func _ready():
 		var fight_area = get_node(delete_path)
 		fight_area.disabled = PROCESS_MODE_DISABLED
 		GlobalUtil.delete_fight_area = false
-
+	
+		
 	#get cells and create balanced K-tree
 	var cell_points = tile_map.get_used_cells(0)
 	cell_points = GlobalUtil.vector_to_array(cell_points)
@@ -78,6 +80,24 @@ func _ready():
 	
 	GlobalUtil.setCurrentSceneCoords(cell_points)
 	GlobalUtil.setCurrentSceneTree(tree)
+	
+	if get_tree().current_scene.name == "reception":
+		var rng = RandomNumberGenerator.new()
+		while(1):
+			await get_tree().create_timer(rng.randf_range(0.2,0.5)).timeout
+			$"../TileMap/Label".visible = false
+			await get_tree().create_timer(rng.randf_range(0.2,0.5)).timeout
+			$"../TileMap/Label".visible = true
+			$"../TileMap/Label".global_position = Vector2(rng.randi_range(50,80),rng.randi_range(25,10))
+			
+	if get_tree().current_scene.name == "level2":
+		var rng = RandomNumberGenerator.new()
+		while(1):
+			await get_tree().create_timer(rng.randf_range(0.1,0.2)).timeout
+			$"../PrinterGoesHere".global_position = Vector2(313,42)
+			await get_tree().create_timer(rng.randf_range(0.1,0.2)).timeout
+			$"../PrinterGoesHere".global_position = Vector2(312,42)
+		
 	print("scene load done")
 	
 	#var bruh = GlobalUtil.load_mesh(get_tree().current_scene.name)

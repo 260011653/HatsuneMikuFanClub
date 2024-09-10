@@ -248,6 +248,12 @@ func _on_fight_receptionist_body_entered(body):
 	if body.get_name() == "playercharacter":
 		GlobalUtil.disable_movement = true
 		current_path_to_move = []
+		$"../TileMap/Label".scale = Vector2(0.5,0.5)
+		$"../TileMap/Label".text = "**BAAM**"
+		$"../TileMap/Label".visible = true
+		$"../TileMap/Label".modulate = "ff00ff"
+		await get_tree().create_timer(2).timeout 
+		
 		var pos = [int(roundf(global_position.x/16 - 0.5)), int(roundf(global_position.y - 0.5)/16)]
 	#print(SceneTransition.transition_conditions["reception"][[8,0]][0])
 		SceneTransition.change_scene("Receptionist.tscn","fight",current_pos) #round player pos to whole number])
@@ -258,6 +264,9 @@ func _on_fight_wheely_body_entered(body):
 	if body.get_name() == "playercharacter":
 		GlobalUtil.disable_movement = true
 		current_path_to_move = []
+		$"../wheeliebagkid/Label".visible = true
+		await get_tree().create_timer(2).timeout 
+		$"../wheeliebagkid/Label".visible = false
 		var pos = [int(roundf(global_position.x/16 - 0.5)), int(roundf(global_position.y - 0.5)/16)]
 	#print(SceneTransition.transition_conditions["reception"][[8,0]][0])
 		SceneTransition.change_scene("Wheely.tscn","fight",current_pos) #round player pos to whole number])

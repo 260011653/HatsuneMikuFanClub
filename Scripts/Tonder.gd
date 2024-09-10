@@ -24,6 +24,7 @@ func _process(delta):
 			print("died")
 			GlobalUtil.delete_fight_area = true
 			GlobalUtil.delete_fight_area_name = "FightVanTonder"
+			GlobalUtil.van_tonder_defeated = true
 			get_tree().change_scene_to_file("res://Scenes/win.tscn")
 			#SceneTransition.change_scene("classroom.tscn","fight") #round player pos to whole number])
 	if RHealth <= 750:

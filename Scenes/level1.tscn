@@ -61,6 +61,16 @@ y_sort_enabled = true
 position = Vector2(234, 45)
 texture = ExtResource("6_sliu4")
 
+[node name="Label" type="Label" parent="wheeliebagkid"]
+visible = false
+offset_left = -20.0
+offset_top = -17.0
+offset_right = 160.0
+offset_bottom = 32.0
+scale = Vector2(0.3, 0.3)
+text = "You're so skibidi!!!"
+uppercase = true
+
 [node name="Area2D" type="Area2D" parent="."]
 position = Vector2(264, 14)
 

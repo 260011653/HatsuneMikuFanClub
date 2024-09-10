@@ -46,8 +46,17 @@ layer_1/tile_data = PackedInt32Array(0, 6, 0, 65536, 6, 1, 131072, 6, 2, 1, 6554
 layer_2/name = "interactables"
 layer_2/tile_data = PackedInt32Array()
 
+[node name="Label" type="Label" parent="TileMap"]
+visible = false
+offset_left = 49.0
+offset_top = 16.0
+offset_right = 92.0
+offset_bottom = 39.0
+scale = Vector2(0.3, 0.3)
+text = "*click"
+
 [node name="playercharacter" parent="." instance=ExtResource("3_8muit")]
-position = Vector2(114, 62)
+position = Vector2(12, 66)
 
 [node name="Area2D" type="Area2D" parent="."]
 

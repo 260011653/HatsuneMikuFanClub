@@ -65,7 +65,7 @@ func write_mesh(meshArr,savename) -> void:
 			
 	file.store_string(dat)
 
-const MESH_SAVE_PATH: String = "res://Scripts/meshes.bin" #CHANGE TO USER:// WHEN EXPORTING
+const MESH_SAVE_PATH: String = "user://meshes.bin" #CHANGE TO USER:// WHEN EXPORTING
 
 #!
 #!
@@ -75,7 +75,6 @@ const MESH_SAVE_PASS: String = "password"
 var mesh_dat = {} #GLOBAL RUNTIME INSTANCE OF MESH DICT
 
 func write_mesh_json(meshArr,savename) -> void:
-	
 	var file = FileAccess.open(MESH_SAVE_PATH, FileAccess.WRITE)
 	
 	var shelf = {}

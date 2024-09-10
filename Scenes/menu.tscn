@@ -1,0 +1,60 @@
+[gd_scene load_steps=7 format=3 uid="uid://cy82pl4bkgpog"]
+
+[ext_resource type="Script" path="res://Scripts/menu.gd" id="1_lqdy1"]
+[ext_resource type="Texture2D" uid="uid://c2w3yds4pn4qv" path="res://Art/rece_bg.png" id="2_rh4ju"]
+[ext_resource type="FontFile" uid="uid://yx8eo66u0ce3" path="res://pixel-comic-sans-undertale-sans-font.ttf" id="3_5c6ss"]
+[ext_resource type="Texture2D" uid="uid://2eotmj1n7h24" path="res://Art/button_sma.png" id="4_igu2v"]
+[ext_resource type="Texture2D" uid="uid://b251cv06squc4" path="res://Art/button_thr.png" id="5_w2xq0"]
+[ext_resource type="AudioStream" uid="uid://cl0j7hkukphov" path="res://Music/title_theme.mp3" id="6_6ylyl"]
+
+[node name="Node" type="Node"]
+script = ExtResource("1_lqdy1")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("2_rh4ju")
+
+[node name="Title" type="Label" parent="TextureRect"]
+layout_mode = 0
+offset_left = 281.0
+offset_top = 39.0
+offset_right = 1638.0
+offset_bottom = 269.0
+theme_override_fonts/font = ExtResource("3_5c6ss")
+theme_override_font_sizes/font_size = 200
+text = "JOHN ACG'S:"
+
+[node name="SubTitle" type="Label" parent="TextureRect/Title"]
+layout_mode = 0
+offset_left = 100.0
+offset_top = 206.0
+offset_right = 1276.0
+offset_bottom = 293.0
+theme_override_fonts/font = ExtResource("3_5c6ss")
+theme_override_font_sizes/font_size = 75
+text = "Quest to Defeat Mr van Tonder"
+
+[node name="Start" type="TextureButton" parent="."]
+offset_left = 743.0
+offset_top = 616.0
+offset_right = 1274.0
+offset_bottom = 831.0
+texture_normal = ExtResource("4_igu2v")
+stretch_mode = 4
+
+[node name="Exit" type="TextureButton" parent="."]
+offset_left = 746.0
+offset_top = 842.0
+offset_right = 2054.0
+offset_bottom = 1058.0
+texture_normal = ExtResource("5_w2xq0")
+stretch_mode = 4
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_6ylyl")
+autoplay = true
+
+[connection signal="pressed" from="Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]
+[connection signal="finished" from="AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]

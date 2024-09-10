@@ -97,6 +97,18 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector2(0, 1000), Vector2(0, -500)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TextureRect3:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.019915, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_1eabe"]
 length = 0.001
@@ -136,6 +148,18 @@ tracks/2/keys = {
 "update": 0,
 "values": [Vector2(0, 1000)]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("TextureRect3:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_n7d2n"]
 _data = {
@@ -172,6 +196,7 @@ rotation = 3.14159
 scale = Vector2(-4, 4)
 
 [node name="TextureRect3" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0)
 offset_top = 1000.0
 offset_right = 1804.0
 offset_bottom = 3583.0

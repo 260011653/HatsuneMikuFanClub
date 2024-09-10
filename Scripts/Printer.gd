@@ -1,8 +1,8 @@
 extends Node
 var rng =RandomNumberGenerator.new()
-var Student = Player.new(40,500,"John")
-var RHealth = 10 # 2000
-var Max = 10 # 2000
+var Student = Player.new(60,500,"John")
+var RHealth = 1000 #1000
+var Max = 1000 #1000
 var Died = false
 #func _ready():
 
@@ -33,33 +33,34 @@ func _process(delta):
 
 func EnemAttack():
 	await get_tree().create_timer(1).timeout
-	var Move = rng.randi_range(1,5)
-	if RHealth <= Max/2:
-		Move = rng.randi_range(1,6)
-	match Move:
-		1:
-			$ELog.text = "Printer buffers"
-		2:
-			$ELog.text = "Printer jams"
-		3:
-			var damage = rng.randi_range(20,30)
-			$ELog.text = "Printer spews toner over you \n"+str(damage)+" damage"
-			Student.Damage(damage)
-		4:
-			$ELog.text = "Printer gives you a paper cut\n50 damage"
-			Student.Damage(50)
-		5:
-			$ELog.text = "Printer jams"
-		6:
-			var Heal = rng.randi_range(50,150)
-			if RHealth+Heal >= Max:
-				Heal = Max-RHealth
-				RHealth = Max
-			else:
-				RHealth += Heal
-			$ELog.text = "Printer downs some toner \n"+str(Heal)+" Health"
-	$Attack.show()
-	$Magic.show()
+	if RHealth > 0:
+		var Move = rng.randi_range(1,5)
+		if RHealth <= Max/2:
+			Move = rng.randi_range(1,6)
+		match Move:
+			1:
+				$ELog.text = "Printer buffers"
+			2:
+				$ELog.text = "Printer jams"
+			3:
+				var damage = rng.randi_range(20,30)
+				$ELog.text = "Printer spews\ntoner over you \n"+str(damage)+" damage"
+				Student.Damage(damage)
+			4:
+				$ELog.text = "Printer gives\nyou a paper cut\n50 damage"
+				Student.Damage(50)
+			5:
+				$ELog.text = "Printer jams"
+			6:
+				var Heal = rng.randi_range(50,150)
+				if RHealth+Heal >= Max:
+					Heal = Max-RHealth
+					RHealth = Max
+				else:
+					RHealth += Heal
+				$ELog.text = "Printer downs\nsome toner \n"+str(Heal)+" Health"
+		$Attack.show()
+		$Magic.show()
 
 func _on_attack_pressed():
 	$Attack.hide()
@@ -137,3 +138,7 @@ func _on_back_pressed():
 
 func _on_run_pressed():
 	$Log.text = "You cannot run\nfrom this fight"
+
+
+func _on_audio_stream_player_finished():
+	$AudioStreamPlayer.play()

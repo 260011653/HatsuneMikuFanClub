@@ -1,11 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://cuu4ny3d3cuxh"]
+[gd_scene load_steps=11 format=3 uid="uid://cuu4ny3d3cuxh"]
 
 [ext_resource type="Texture2D" uid="uid://bsx2q7ccr64g8" path="res://Art/flat_colour_bg.png" id="1_5q0gt"]
+[ext_resource type="Script" path="res://Scripts/reception.gd" id="1_fgrmr"]
 [ext_resource type="TileSet" uid="uid://cya47ra4sng0t" path="res://Scenes/tileset_game.tres" id="2_6x2xf"]
 [ext_resource type="PackedScene" uid="uid://ce2b4mv8y2x08" path="res://Scenes/playercharacter.tscn" id="3_fyl13"]
 [ext_resource type="Script" path="res://Scripts/sceneloader.gd" id="4_ybilw"]
 [ext_resource type="Texture2D" uid="uid://df8so5b7x2flr" path="res://Art/wheeliebag.png" id="5_2evrs"]
 [ext_resource type="Texture2D" uid="uid://l4v8hcxpr5gk" path="res://Art/wheeliebagkid.png" id="6_sliu4"]
+[ext_resource type="AudioStream" uid="uid://bs8dsn68lfh1r" path="res://Music/floor1_theme.mp3" id="8_0kkje"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hmbcp"]
 size = Vector2(64, 13)
@@ -14,6 +16,7 @@ size = Vector2(64, 13)
 size = Vector2(31, 21)
 
 [node name="level1" type="Node"]
+script = ExtResource("1_fgrmr")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 texture_filter = 1
@@ -71,5 +74,10 @@ shape = SubResource("RectangleShape2D_hmbcp")
 position = Vector2(239.5, 46.5)
 shape = SubResource("RectangleShape2D_0mce2")
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_0kkje")
+autoplay = true
+
 [connection signal="body_entered" from="Area2D" to="playercharacter" method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="FightWheely" to="playercharacter" method="_on_fight_wheely_body_entered"]
+[connection signal="finished" from="AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]

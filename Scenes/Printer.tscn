@@ -1,10 +1,11 @@
-[gd_scene load_steps=16 format=3 uid="uid://bkwxy0ds87s5g"]
+[gd_scene load_steps=17 format=3 uid="uid://bkwxy0ds87s5g"]
 
 [ext_resource type="Script" path="res://Scripts/Printer.gd" id="1_740g7"]
 [ext_resource type="Texture2D" uid="uid://12wdu6xre3j0" path="res://Art/f2_bg.png" id="2_psns8"]
 [ext_resource type="FontFile" uid="uid://yx8eo66u0ce3" path="res://pixel-comic-sans-undertale-sans-font.ttf" id="2_s76fh"]
 [ext_resource type="Texture2D" uid="uid://ba3dm0c1f1saf" path="res://Art/printer_boss.png" id="3_3dg6e"]
 [ext_resource type="Texture2D" uid="uid://dn0kg7pour2nt" path="res://Art/button_att.png" id="3_yj73i"]
+[ext_resource type="AudioStream" uid="uid://buy5jm556x1au" path="res://Music/printer_theme.mp3" id="4_2qcik"]
 [ext_resource type="Texture2D" uid="uid://bp00625gpgq8a" path="res://Art/button_mag.png" id="4_qd1j5"]
 [ext_resource type="Texture2D" uid="uid://bevfmmcra5nck" path="res://Art/button_hea.png" id="5_8m3cp"]
 [ext_resource type="Texture2D" uid="uid://bqcm8ibb1iyi0" path="res://Art/button_run.png" id="6_kq26j"]
@@ -34,6 +35,10 @@ offset_bottom = 833.0
 texture = ExtResource("3_3dg6e")
 expand_mode = 1
 stretch_mode = 4
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_2qcik")
+autoplay = true
 
 [node name="EnemyDisplay" type="Label" parent="."]
 offset_left = 781.0
@@ -153,9 +158,9 @@ theme_override_fonts/font = ExtResource("2_s76fh")
 theme_override_font_sizes/font_size = 50
 
 [node name="ELog" type="Label" parent="."]
-offset_left = 1397.0
+offset_left = 1410.0
 offset_top = 45.0
-offset_right = 1873.0
+offset_right = 1886.0
 offset_bottom = 757.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("2_s76fh")
@@ -177,6 +182,7 @@ offset_bottom = 888.0
 theme_override_fonts/font = ExtResource("2_s76fh")
 theme_override_font_sizes/font_size = 50
 
+[connection signal="finished" from="AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]
 [connection signal="pressed" from="Attack" to="." method="_on_attack_pressed"]
 [connection signal="pressed" from="Magic" to="." method="_on_magic_pressed"]
 [connection signal="pressed" from="Heal" to="." method="_on_heal_pressed"]

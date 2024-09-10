@@ -1,9 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://0utaa34d1sac"]
+[gd_scene load_steps=9 format=3 uid="uid://0utaa34d1sac"]
 
 [ext_resource type="Script" path="res://Scripts/sceneloader.gd" id="1_dchcm"]
 [ext_resource type="Texture2D" uid="uid://803yb07wdkcn" path="res://Art/background/3840x2160-black-solid-color-background.jpg" id="1_i0n5k"]
+[ext_resource type="Script" path="res://Scripts/reception.gd" id="1_uu08g"]
 [ext_resource type="TileSet" uid="uid://cya47ra4sng0t" path="res://Scenes/tileset_game.tres" id="2_6y2q1"]
 [ext_resource type="PackedScene" uid="uid://ce2b4mv8y2x08" path="res://Scenes/playercharacter.tscn" id="3_8muit"]
+[ext_resource type="AudioStream" uid="uid://ctdg5jqxwutns" path="res://Music/reception_theme.mp3" id="6_tbwl6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a0qmj"]
 size = Vector2(32, 13)
@@ -12,6 +14,7 @@ size = Vector2(32, 13)
 size = Vector2(20, 78)
 
 [node name="reception" type="Node"]
+script = ExtResource("1_uu08g")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 texture_filter = 1
@@ -58,6 +61,11 @@ shape = SubResource("RectangleShape2D_a0qmj")
 position = Vector2(65, 39)
 shape = SubResource("RectangleShape2D_fsqvc")
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_tbwl6")
+autoplay = true
+
 [connection signal="body_entered" from="Area2D" to="playercharacter" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="playercharacter" method="_on_area_2d_body_exited"]
 [connection signal="body_entered" from="FightReceptionist" to="playercharacter" method="_on_fight_receptionist_body_entered"]
+[connection signal="finished" from="AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]

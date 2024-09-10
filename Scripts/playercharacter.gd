@@ -276,9 +276,13 @@ func _on_fight_van_tonder_body_entered(body):
 	if body.get_name() == "playercharacter":
 		current_path_to_move = []
 		GlobalUtil.disable_movement = true
-		$"../Mrvantonder/Label".text = "You didn't do your homework!"
+		$"../playercharacter/Camera2D".offset = Vector2(0,-50)
+		$"../playercharacter/Camera2D".zoom = Vector2(10,10)
+		$"../Mrvantonder/Label".text = "Sir... You didn't do your homework!"
 		await get_tree().create_timer(2).timeout 
-		$"../Mrvantonder/Label".text = "lmao"
+		$"../Mrvantonder/Label".text = "Get rekt!"
+		$"../playercharacter/Camera2D".zoom = Vector2(5,5)
+		$"../playercharacter/Camera2D".offset = Vector2(0,0)
 		await get_tree().create_timer(2).timeout 
 		var pos = [int(roundf(global_position.x/16 - 0.5)), int(roundf(global_position.y - 0.5)/16)]
 	#print(SceneTransition.transition_conditions["reception"][[8,0]][0])

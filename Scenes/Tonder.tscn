@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bs0vbk51aktea"]
+[gd_scene load_steps=19 format=3 uid="uid://bs0vbk51aktea"]
 
 [ext_resource type="Script" path="res://Scripts/Tonder.gd" id="1_6epdp"]
 [ext_resource type="FontFile" uid="uid://yx8eo66u0ce3" path="res://pixel-comic-sans-undertale-sans-font.ttf" id="2_cblaq"]
@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://bqdyp38w5mcqg" path="res://Art/gui_health.png" id="13_5l54k"]
 [ext_resource type="Texture2D" uid="uid://dpevno03iqvuo" path="res://Art/gui_mana.png" id="14_644q7"]
 [ext_resource type="Texture2D" uid="uid://bi2hiv412o068" path="res://Art/gui_textbox.png" id="15_ij60i"]
+[ext_resource type="AudioStream" uid="uid://cerht7pthujyf" path="res://Music/mrvantonder_theme.mp3" id="18_dc5yr"]
 
 [node name="Node" type="Node"]
 script = ExtResource("1_6epdp")
@@ -215,6 +216,10 @@ offset_bottom = 965.0
 theme_override_fonts/font = ExtResource("2_cblaq")
 theme_override_font_sizes/font_size = 50
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("18_dc5yr")
+autoplay = true
+
 [connection signal="pressed" from="Attack" to="." method="_on_attack_pressed"]
 [connection signal="pressed" from="Magic" to="." method="_on_magic_pressed"]
 [connection signal="pressed" from="Heal" to="." method="_on_heal_pressed"]
@@ -222,3 +227,4 @@ theme_override_font_sizes/font_size = 50
 [connection signal="pressed" from="Sp2" to="." method="_on_sp_2_pressed"]
 [connection signal="pressed" from="Back" to="." method="_on_back_pressed"]
 [connection signal="pressed" from="Run" to="." method="_on_run_pressed"]
+[connection signal="finished" from="AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]

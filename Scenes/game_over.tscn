@@ -1,18 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://dm1whcmguc47w"]
+[gd_scene load_steps=4 format=3 uid="uid://dm1whcmguc47w"]
 
-[ext_resource type="FontFile" uid="uid://yx8eo66u0ce3" path="res://pixel-comic-sans-undertale-sans-font.ttf" id="1_qqm15"]
+[ext_resource type="Texture2D" uid="uid://mm2m1i1fs6jc" path="res://Art/you_lose.png" id="1_a1t10"]
+[ext_resource type="Script" path="res://Scripts/win.gd" id="1_h0pvw"]
+[ext_resource type="AudioStream" uid="uid://ciuho3ddbbbij" path="res://Music/Lose_theme.mp3" id="3_mk24k"]
 
 [node name="GameOver" type="Node"]
+script = ExtResource("1_h0pvw")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="TextureRect" type="TextureRect" parent="."]
 offset_right = 1920.0
 offset_bottom = 1080.0
+texture = ExtResource("1_a1t10")
 
-[node name="TextEdit" type="TextEdit" parent="."]
-offset_left = 654.0
-offset_top = 435.0
-offset_right = 1223.0
-offset_bottom = 587.0
-theme_override_fonts/font = ExtResource("1_qqm15")
-theme_override_font_sizes/font_size = 100
-text = "Game Over"
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_mk24k")
+autoplay = true

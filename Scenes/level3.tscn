@@ -1,9 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://cqmmki0ubiq7c"]
+[gd_scene load_steps=9 format=3 uid="uid://cqmmki0ubiq7c"]
 
 [ext_resource type="Texture2D" uid="uid://803yb07wdkcn" path="res://Art/background/3840x2160-black-solid-color-background.jpg" id="1_61tk5"]
 [ext_resource type="Script" path="res://Scripts/sceneloader.gd" id="1_g5rtb"]
+[ext_resource type="Script" path="res://Scripts/reception.gd" id="1_xiexv"]
 [ext_resource type="TileSet" uid="uid://cya47ra4sng0t" path="res://Scenes/tileset_game.tres" id="2_vagop"]
 [ext_resource type="PackedScene" uid="uid://ce2b4mv8y2x08" path="res://Scenes/playercharacter.tscn" id="3_sfdeq"]
+[ext_resource type="AudioStream" uid="uid://b4jekbqchxlgy" path="res://Music/floor2_theme.mp3" id="6_abwkl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_golmv"]
 size = Vector2(31, 13)
@@ -12,6 +14,7 @@ size = Vector2(31, 13)
 size = Vector2(8, 15)
 
 [node name="level3" type="Node"]
+script = ExtResource("1_xiexv")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 texture_filter = 1
@@ -59,6 +62,10 @@ shape = SubResource("RectangleShape2D_golmv")
 position = Vector2(328, 47.5)
 shape = SubResource("RectangleShape2D_o3asp")
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_abwkl")
+
 [connection signal="body_entered" from="Area2D" to="playercharacter" method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="Area2D2" to="playercharacter" method="_on_area_2d_2_body_entered"]
 [connection signal="body_exited" from="Area2D2" to="playercharacter" method="_on_area_2d_2_body_exited"]
+[connection signal="finished" from="AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]

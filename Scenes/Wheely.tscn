@@ -1,20 +1,21 @@
-[gd_scene load_steps=16 format=3 uid="uid://cane082o6ydy1"]
+[gd_scene load_steps=17 format=3 uid="uid://cane082o6ydy1"]
 
 [ext_resource type="Script" path="res://Scripts/Wheely.gd" id="1_nnpe2"]
 [ext_resource type="Texture2D" uid="uid://bljwwr3by46b" path="res://Art/f1_bg.png" id="2_eqo14"]
 [ext_resource type="FontFile" uid="uid://yx8eo66u0ce3" path="res://pixel-comic-sans-undertale-sans-font.ttf" id="2_n27a1"]
 [ext_resource type="Texture2D" uid="uid://dn0kg7pour2nt" path="res://Art/button_att.png" id="3_mb56g"]
+[ext_resource type="Texture2D" uid="uid://cvyurgejynmw7" path="res://Art/wheeliebagckid.png" id="3_qj1u3"]
 [ext_resource type="Texture2D" uid="uid://bp00625gpgq8a" path="res://Art/button_mag.png" id="4_tj7th"]
 [ext_resource type="Texture2D" uid="uid://bevfmmcra5nck" path="res://Art/button_hea.png" id="5_aov0y"]
 [ext_resource type="Texture2D" uid="uid://bqcm8ibb1iyi0" path="res://Art/button_run.png" id="6_omydx"]
 [ext_resource type="Texture2D" uid="uid://qm30p4vxdxbn" path="res://Art/placeholder_student_battleicon.png" id="7_hpp67"]
 [ext_resource type="Texture2D" uid="uid://b251cv06squc4" path="res://Art/button_thr.png" id="7_kwelr"]
 [ext_resource type="Texture2D" uid="uid://2eotmj1n7h24" path="res://Art/button_sma.png" id="8_lo1xr"]
-[ext_resource type="Texture2D" uid="uid://cshtwn0i421i7" path="res://Art/placeholder_student_potrait.png" id="8_uxewn"]
 [ext_resource type="Texture2D" uid="uid://ddemsdbmlqxnd" path="res://Art/back.png" id="10_3fryi"]
 [ext_resource type="Texture2D" uid="uid://bqdyp38w5mcqg" path="res://Art/gui_health.png" id="12_p1jwg"]
 [ext_resource type="Texture2D" uid="uid://dpevno03iqvuo" path="res://Art/gui_mana.png" id="13_jfwjv"]
 [ext_resource type="Texture2D" uid="uid://bi2hiv412o068" path="res://Art/gui_textbox.png" id="14_a2byv"]
+[ext_resource type="AudioStream" uid="uid://buv2srhev6lu" path="res://Music/wheeliebagkid_theme.mp3" id="16_lx40n"]
 
 [node name="Node2" type="Node"]
 script = ExtResource("1_nnpe2")
@@ -27,11 +28,11 @@ offset_bottom = 1084.0
 texture = ExtResource("2_eqo14")
 
 [node name="Wheely" type="TextureRect" parent="."]
-offset_left = 763.0
-offset_top = 108.0
-offset_right = 1194.0
-offset_bottom = 553.0
-texture = ExtResource("8_uxewn")
+offset_left = 670.0
+offset_top = -238.0
+offset_right = 1438.0
+offset_bottom = 786.0
+texture = ExtResource("3_qj1u3")
 
 [node name="EnemyDisplay" type="Label" parent="."]
 offset_left = 621.0
@@ -151,9 +152,9 @@ theme_override_fonts/font = ExtResource("2_n27a1")
 theme_override_font_sizes/font_size = 50
 
 [node name="ELog" type="Label" parent="."]
-offset_left = 1397.0
+offset_left = 1402.0
 offset_top = 45.0
-offset_right = 1873.0
+offset_right = 1878.0
 offset_bottom = 757.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("2_n27a1")
@@ -175,6 +176,10 @@ offset_bottom = 888.0
 theme_override_fonts/font = ExtResource("2_n27a1")
 theme_override_font_sizes/font_size = 50
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("16_lx40n")
+autoplay = true
+
 [connection signal="pressed" from="Attack" to="." method="_on_attack_pressed"]
 [connection signal="pressed" from="Magic" to="." method="_on_magic_pressed"]
 [connection signal="pressed" from="Heal" to="." method="_on_heal_pressed"]
@@ -182,3 +187,4 @@ theme_override_font_sizes/font_size = 50
 [connection signal="pressed" from="Sp2" to="." method="_on_sp_2_pressed"]
 [connection signal="pressed" from="Back" to="." method="_on_back_pressed"]
 [connection signal="pressed" from="Run" to="." method="_on_run_pressed"]
+[connection signal="finished" from="AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]

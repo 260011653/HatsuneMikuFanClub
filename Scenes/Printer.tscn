@@ -158,9 +158,9 @@ theme_override_fonts/font = ExtResource("2_s76fh")
 theme_override_font_sizes/font_size = 50
 
 [node name="ELog" type="Label" parent="."]
-offset_left = 1397.0
+offset_left = 1410.0
 offset_top = 45.0
-offset_right = 1873.0
+offset_right = 1886.0
 offset_bottom = 757.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("2_s76fh")

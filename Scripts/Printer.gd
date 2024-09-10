@@ -44,10 +44,10 @@ func EnemAttack():
 				$ELog.text = "Printer jams"
 			3:
 				var damage = rng.randi_range(20,30)
-				$ELog.text = "Printer spews toner over you \n"+str(damage)+" damage"
+				$ELog.text = "Printer spews\ntoner over you \n"+str(damage)+" damage"
 				Student.Damage(damage)
 			4:
-				$ELog.text = "Printer gives you a paper cut\n50 damage"
+				$ELog.text = "Printer gives\nyou a paper cut\n50 damage"
 				Student.Damage(50)
 			5:
 				$ELog.text = "Printer jams"
@@ -58,7 +58,7 @@ func EnemAttack():
 					RHealth = Max
 				else:
 					RHealth += Heal
-				$ELog.text = "Printer downs some toner \n"+str(Heal)+" Health"
+				$ELog.text = "Printer downs\nsome toner \n"+str(Heal)+" Health"
 		$Attack.show()
 		$Magic.show()
 

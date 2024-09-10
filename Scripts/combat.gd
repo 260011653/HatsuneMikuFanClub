@@ -10,13 +10,13 @@ func _ready():
 	var assign = rng.randi_range(1,3)
 	match assign:
 		1: 
-			Foe = Enem.new("Student",100,"Student throws textbook at you",20,false)
+			Foe = Enem.new("Student",100,"Student throws\ntextbook at you",20,false)
 			$Student.show()
 		2:
-			Foe = Enem.new("Teacher", 200,"Teacher gives you detention",35, false)
+			Foe = Enem.new("Teacher", 200,"Teacher gives\nyou detention",35, false)
 			$Teacher.show()
 		3:
-			Foe = Enem.new("Rogue Computer", 160,"Rogue Computer sends phishing email",25,false)
+			Foe = Enem.new("Rogue Computer", 160,"Rogue Computer sends\nphishing email",25,false)
 			$Computer.show()
 
 
@@ -46,7 +46,7 @@ func EnemAttack():
 		match Move:
 			1:
 				var damage = Foe.Attack()
-				$ELog.text = Foe.Get_Name()+" swings dealing \n"+str(damage)+" damage"
+				$ELog.text = Foe.Get_Name()+"\nswings dealing \n"+str(damage)+" damage"
 				Student.Damage(damage)
 			2:
 				var damage = Foe.Sp()
@@ -54,11 +54,11 @@ func EnemAttack():
 				Student.Damage(damage)
 			3:
 				var damage = Foe.Attack()
-				$ELog.text = Foe.Get_Name()+" swings dealing \n"+str(damage)+" damage"
+				$ELog.text = Foe.Get_Name()+"\nswings dealing \n"+str(damage)+" damage"
 				Student.Damage(damage)
 			4:
 				var damage = Foe.Attack()
-				$ELog.text = Foe.Get_Name()+" swings dealing \n"+str(damage)+" damage"
+				$ELog.text = Foe.Get_Name()+"\nswings dealing \n"+str(damage)+" damage"
 				Student.Damage(damage)
 			5:
 				Foe.Heal()

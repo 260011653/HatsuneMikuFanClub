@@ -179,6 +179,7 @@ stretch_mode = 4
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("16_xod17")
+volume_db = -20.0
 autoplay = true
 
 [connection signal="pressed" from="Attack" to="." method="_on_attack_pressed"]

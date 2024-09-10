@@ -17,6 +17,7 @@ func _process(delta):
 		await get_tree().create_timer(2).timeout 
 		get_tree().change_scene_to_file("res://Scenes/game_over.tscn")
 	if RHealth <= 0:
+		$EHP.text = "0"
 		$EnemyDisplay.text = "Mr Van Tonder: 0"
 		if Died == false:
 			Died = true
@@ -72,22 +73,24 @@ func EnemAttack():
 	
 
 func _on_attack_pressed():
-	$Attack.hide()
-	$Magic.hide()
-	var damage = Student.Attack()
-	$Log.text = "You punch dealing: \n"+str(damage)+" Damage"
-	RHealth -= damage
-	EnemAttack()
+	if Student.Get_Health() > 0:
+		$Attack.hide()
+		$Magic.hide()
+		var damage = Student.Attack()
+		$Log.text = "You punch dealing: \n"+str(damage)+" Damage"
+		RHealth -= damage
+		EnemAttack()
 
 
 func _on_magic_pressed():
-	$Magic.hide()
-	$Attack.hide()
-	$Heal.show()
-	$Sp1.show()
-	$Sp2.show()
-	$Run.show()
-	$Back.show()
+	if Student.Get_Health() > 0:
+		$Magic.hide()
+		$Attack.hide()
+		$Heal.show()
+		$Sp1.show()
+		$Sp2.show()
+		$Run.show()
+		$Back.show()
 
 
 

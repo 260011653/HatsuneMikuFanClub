@@ -50,7 +50,7 @@ const scene_starting_positions = {
 	}
 }
 
-const list_of_quotes = ["Average Calculator!", "Rubber Duckies...", "Good afternoon...", "I like muffins", "ChatGPT", "Pity variable"]
+const list_of_quotes = ["Average Calculator!", "Rubber Duckies...", "Good afternoon...", "Sir...", "ChatGPT", "Pity variable + 1", "Bubble sort", "Pseudocode..."]
 
 
 var last_direction = ""

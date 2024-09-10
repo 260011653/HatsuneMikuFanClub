@@ -52,6 +52,14 @@ y_sort_enabled = true
 position = Vector2(21, 68)
 texture = ExtResource("5_abqgg")
 
+[node name="Label" type="Label" parent="Mrvantonder"]
+modulate = Color(1, 0, 0, 1)
+offset_left = -8.0
+offset_top = -29.0
+offset_right = 32.0
+offset_bottom = -6.0
+scale = Vector2(0.5, 0.5)
+
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
@@ -61,7 +69,7 @@ shape = SubResource("RectangleShape2D_pgjtc")
 [node name="FightVanTonder" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FightVanTonder"]
-position = Vector2(21, 70)
+position = Vector2(21, 71)
 shape = SubResource("CircleShape2D_0ngpn")
 
 [connection signal="body_entered" from="Area2D" to="playercharacter" method="_on_area_2d_body_entered"]

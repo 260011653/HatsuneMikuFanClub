@@ -120,6 +120,7 @@ func _on_sp_2_pressed():
 		if Move >= 3:
 			$Log.text = "You show your\n100% mark\ndealing: "+str(RHealth)+" Damage"
 			RHealth -= RHealth
+		EnemAttack()
 	else:
 		$Log.text = "You don't have the\nmana for that"
 
@@ -129,6 +130,8 @@ func _on_back_pressed():
 	$Sp2.hide()
 	$Back.hide()
 	$Run.hide()
+	$Attack.show()
+	$Magic.show()
 	
 func _on_run_pressed():
 	$Log.text = "You cannot run\nfrom this fight"

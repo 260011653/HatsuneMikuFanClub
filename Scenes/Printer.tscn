@@ -38,6 +38,7 @@ stretch_mode = 4
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_2qcik")
+volume_db = -20.0
 autoplay = true
 
 [node name="EnemyDisplay" type="Label" parent="."]

@@ -30,12 +30,12 @@ func _input(event: InputEvent) -> void:
 		print("detected")
 		if event.pressed and event.button_index == MOUSE_BUTTON_RIGHT and GlobalUtil.disable_movement == false:
 			print("clicked")
-			Input.set_custom_mouse_cursor(click_cursor)
+			Input.set_custom_mouse_cursor(click_cursor, 0, Vector2(32,32))
 			bfs_move(get_global_mouse_position())
 			#navigation_agent.target_position = get_global_mouse_position()
 			nav_active = true
 		elif event.is_released() and event.button_index == MOUSE_BUTTON_RIGHT:
-			Input.set_custom_mouse_cursor(normal_cursor)
+			Input.set_custom_mouse_cursor(normal_cursor, 0, Vector2(32,32))
 	if Input.is_action_just_pressed("Interact"):
 		if is_in_area and !GlobalUtil.disable_movement:
 			current_path_to_move = []
@@ -276,6 +276,16 @@ func _on_fight_van_tonder_body_entered(body):
 	if body.get_name() == "playercharacter":
 		current_path_to_move = []
 		GlobalUtil.disable_movement = true
+		$"../playercharacter/Camera2D".offset = Vector2(0,-20)
+		$"../playercharacter/Camera2D".zoom = Vector2(7,7)
+		$"../Mrvantonder/Label".text = "Sir..."
+		await get_tree().create_timer(2).timeout 
+		$"../Mrvantonder/Label".text = "You didn't do your homework!"
+		await get_tree().create_timer(2).timeout 
+		$"../Mrvantonder/Label".text = "Get rekt!"
+		$"../playercharacter/Camera2D".zoom = Vector2(5,5)
+		$"../playercharacter/Camera2D".offset = Vector2(0,0)
+		await get_tree().create_timer(2).timeout 
 		var pos = [int(roundf(global_position.x/16 - 0.5)), int(roundf(global_position.y - 0.5)/16)]
 	#print(SceneTransition.transition_conditions["reception"][[8,0]][0])
 		SceneTransition.change_scene("Tonder.tscn","fight",current_pos) #round player pos to whole number])

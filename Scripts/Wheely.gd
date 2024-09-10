@@ -57,7 +57,7 @@ func EnemAttack():
 				$ELog.text = "Wheely Bag Kid\nattacks dealing \n"+str(damage)+" damage"
 				Student.Damage(damage)
 			5:
-				var Heal = rng.randi_range(50,150)
+				var Heal = rng.randi_range(30,75)
 				if RHealth+Heal >= Max:
 					Heal = Max-RHealth
 					RHealth = Max
@@ -68,22 +68,24 @@ func EnemAttack():
 		$Magic.show()
 
 func _on_attack_pressed():
-	$Attack.hide()
-	$Magic.hide()
-	var damage = Student.Attack()
-	$Log.text = "You punch dealing: \n"+str(damage)+" Damage"
-	RHealth -= damage
-	EnemAttack()
+	if Student.Get_Health() > 0:
+		$Attack.hide()
+		$Magic.hide()
+		var damage = Student.Attack()
+		$Log.text = "You punch dealing: \n"+str(damage)+" Damage"
+		RHealth -= damage
+		EnemAttack()
 
 
 func _on_magic_pressed():
-	$Magic.hide()
-	$Attack.hide()
-	$Heal.show()
-	$Sp1.show()
-	$Sp2.show()
-	$Run.show()
-	$Back.show()
+	if Student.Get_Health() > 0:
+		$Magic.hide()
+		$Attack.hide()
+		$Heal.show()
+		$Sp1.show()
+		$Sp2.show()
+		$Run.show()
+		$Back.show()
 
 
 

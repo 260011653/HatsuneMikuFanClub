@@ -17,7 +17,6 @@ func _process(delta):
 		await get_tree().create_timer(2).timeout 
 		get_tree().change_scene_to_file("res://Scenes/game_over.tscn")
 	if RHealth <= 0:
-		$EHP.text = "0"
 		$EnemyDisplay.text = "Mr Van Tonder: 0"
 		if Died == false:
 			Died = true
@@ -25,6 +24,7 @@ func _process(delta):
 			print("died")
 			GlobalUtil.delete_fight_area = true
 			GlobalUtil.delete_fight_area_name = "FightVanTonder"
+			GlobalUtil.van_tonder_defeated = true
 			get_tree().change_scene_to_file("res://Scenes/win.tscn")
 			#SceneTransition.change_scene("classroom.tscn","fight") #round player pos to whole number])
 	if RHealth <= 750:
@@ -73,7 +73,7 @@ func EnemAttack():
 	
 
 func _on_attack_pressed():
-	if Student.Get_Health() > 0:
+	if Student.Get_Health() >0:
 		$Attack.hide()
 		$Magic.hide()
 		var damage = Student.Attack()
@@ -83,7 +83,7 @@ func _on_attack_pressed():
 
 
 func _on_magic_pressed():
-	if Student.Get_Health() > 0:
+	if Student.Get_Health() >0:
 		$Magic.hide()
 		$Attack.hide()
 		$Heal.show()

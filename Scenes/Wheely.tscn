@@ -28,10 +28,10 @@ offset_bottom = 1084.0
 texture = ExtResource("2_eqo14")
 
 [node name="Wheely" type="TextureRect" parent="."]
-offset_left = 670.0
-offset_top = -238.0
-offset_right = 1438.0
-offset_bottom = 786.0
+offset_left = 569.0
+offset_top = -340.0
+offset_right = 1627.0
+offset_bottom = 1071.0
 texture = ExtResource("3_qj1u3")
 
 [node name="EnemyDisplay" type="Label" parent="."]

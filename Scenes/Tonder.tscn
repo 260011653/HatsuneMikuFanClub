@@ -185,9 +185,9 @@ theme_override_fonts/font = ExtResource("2_cblaq")
 theme_override_font_sizes/font_size = 30
 
 [node name="Mana" type="Label" parent="."]
-offset_left = 141.0
+offset_left = 150.0
 offset_top = 960.0
-offset_right = 198.0
+offset_right = 207.0
 offset_bottom = 1030.0
 theme_override_fonts/font = ExtResource("2_cblaq")
 theme_override_font_sizes/font_size = 60

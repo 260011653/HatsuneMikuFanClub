@@ -63,7 +63,7 @@ func EnemAttack():
 		$Magic.show()
 
 func _on_attack_pressed():
-	if Student.Get_Health() > 0:
+	if Student.Get_Health() >0:
 		$Attack.hide()
 		$Magic.hide()
 		var damage = Student.Attack()
@@ -73,7 +73,7 @@ func _on_attack_pressed():
 
 
 func _on_magic_pressed():
-	if Student.Get_Health() > 0:
+	if Student.Get_Health() >0:
 		$Magic.hide()
 		$Attack.hide()
 		$Heal.show()

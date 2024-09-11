@@ -12,7 +12,7 @@ var delete_fight_area_name = ""
 
 var disable_movement = false
 
-
+var van_tonder_defeated = false
 
 func write_mesh(meshArr,savename) -> void:
 	

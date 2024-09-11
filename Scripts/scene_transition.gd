@@ -28,7 +28,7 @@ const transition_conditions = {
 const scene_starting_positions = {
 	"reception": {
 		"down": Vector2(136,18),
-		"fight": Vector2(114,61)
+		"fight": Vector2(65,61)
 	},
 	"level1": {
 		"up": Vector2(264,16),

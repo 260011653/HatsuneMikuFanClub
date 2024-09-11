@@ -13,7 +13,7 @@
 size = Vector2(64, 13)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0mce2"]
-size = Vector2(31, 21)
+size = Vector2(37, 27)
 
 [node name="level1" type="Node"]
 script = ExtResource("1_fgrmr")
@@ -45,12 +45,6 @@ layer_1/tile_data = PackedInt32Array(0, 1441792, 0, 65536, 1441792, 2, 1, 150732
 layer_2/name = "interactables"
 layer_2/tile_data = PackedInt32Array(65546, 3, 0, 131082, 3, 1, 65547, 65539, 0, 131083, 65539, 1, 65544, 3, 0, 131080, 3, 1, 65545, 65539, 0, 131081, 65539, 1, 65541, 1638400, 0, 131077, 1638400, 1, 65538, 1638400, 0, 131074, 1638400, 1, 65539, 524292, 3, 65548, 524292, 3, 262165, 655363, 4, 196615, 589827, 4, 262146, 589827, 4, 262173, 589827, 4, 65554, 524292, 2, 65555, 589828, 2, 65556, 655364, 2, 65562, 655364, 3, 65557, 3, 2, 131093, 3, 3, 65558, 65539, 2, 131094, 65539, 3, 65561, 1769472, 0, 131097, 1769472, 1, 65564, 1835008, 0, 131100, 1835008, 1)
 
-[node name="playercharacter" parent="." instance=ExtResource("3_fyl13")]
-position = Vector2(239, 58)
-
-[node name="Loader" type="Node" parent="."]
-script = ExtResource("4_ybilw")
-
 [node name="wheeliebag" type="Sprite2D" parent="."]
 y_sort_enabled = true
 position = Vector2(248, 49)
@@ -60,6 +54,21 @@ texture = ExtResource("5_2evrs")
 y_sort_enabled = true
 position = Vector2(234, 45)
 texture = ExtResource("6_sliu4")
+
+[node name="Label" type="Label" parent="wheeliebagkid"]
+visible = false
+offset_left = -23.0
+offset_top = -26.0
+offset_right = 157.0
+offset_bottom = 23.0
+scale = Vector2(0.3, 0.3)
+uppercase = true
+
+[node name="playercharacter" parent="." instance=ExtResource("3_fyl13")]
+position = Vector2(197, 67)
+
+[node name="Loader" type="Node" parent="."]
+script = ExtResource("4_ybilw")
 
 [node name="Area2D" type="Area2D" parent="."]
 position = Vector2(264, 14)
@@ -71,7 +80,7 @@ shape = SubResource("RectangleShape2D_hmbcp")
 [node name="FightWheely" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FightWheely"]
-position = Vector2(239.5, 46.5)
+position = Vector2(238.5, 49.5)
 shape = SubResource("RectangleShape2D_0mce2")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

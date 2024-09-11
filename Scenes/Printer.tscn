@@ -28,10 +28,10 @@ offset_bottom = 1084.0
 texture = ExtResource("2_psns8")
 
 [node name="Printer" type="TextureRect" parent="."]
-offset_left = 509.0
-offset_top = 34.0
-offset_right = 1361.0
-offset_bottom = 833.0
+offset_left = 440.0
+offset_top = 68.0
+offset_right = 1465.0
+offset_bottom = 1029.0
 texture = ExtResource("3_3dg6e")
 expand_mode = 1
 stretch_mode = 4

@@ -17,7 +17,7 @@ func Attack():
 
 func Sp1():
 	if Player_Mana >= 5:
-		var Damage :int = randi_range(50,90)
+		var Damage :int = randi_range(50,80)
 		Player_Mana -= 5
 		return Damage
 	else:
@@ -33,7 +33,7 @@ func Sp2():
 
 func Heal():
 	if Player_Mana >= 5:
-		var Health : int = randi_range(100,175)
+		var Health : int = randi_range(100,150)
 		Player_Mana -= 5
 		if Stats_Health + Health >=Max_Health:
 			Health = Max_Health-Stats_Health

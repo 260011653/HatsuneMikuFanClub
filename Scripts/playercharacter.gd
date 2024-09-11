@@ -248,6 +248,12 @@ func _on_fight_receptionist_body_entered(body):
 	if body.get_name() == "playercharacter":
 		GlobalUtil.disable_movement = true
 		current_path_to_move = []
+		$"../TileMap/Label".scale = Vector2(0.5,0.5)
+		$"../TileMap/Label".text = "**BAAM**"
+		$"../TileMap/Label".visible = true
+		$"../TileMap/Label".modulate = "ff00ff"
+		await get_tree().create_timer(2).timeout 
+		
 		var pos = [int(roundf(global_position.x/16 - 0.5)), int(roundf(global_position.y - 0.5)/16)]
 	#print(SceneTransition.transition_conditions["reception"][[8,0]][0])
 		SceneTransition.change_scene("Receptionist.tscn","fight",current_pos) #round player pos to whole number])
@@ -258,6 +264,17 @@ func _on_fight_wheely_body_entered(body):
 	if body.get_name() == "playercharacter":
 		GlobalUtil.disable_movement = true
 		current_path_to_move = []
+		$"../wheeliebagkid/Label".visible = true
+		await get_tree().create_timer(1).timeout
+		$"../wheeliebagkid/Label".text = "If you want to go up the stairs,\n you have to go through me!"
+		await get_tree().create_timer(2).timeout
+		$"../wheeliebagkid/Label".text = "I am the protector of the stairs,"
+		await get_tree().create_timer(1).timeout
+		$"../wheeliebagkid/Label".text = "Destroyer of shins,"
+		await get_tree().create_timer(1).timeout
+		$"../wheeliebagkid/Label".text = "The Wheelie Bag Kid!"
+		await get_tree().create_timer(1).timeout
+		$"../wheeliebagkid/Label".visible = false
 		var pos = [int(roundf(global_position.x/16 - 0.5)), int(roundf(global_position.y - 0.5)/16)]
 	#print(SceneTransition.transition_conditions["reception"][[8,0]][0])
 		SceneTransition.change_scene("Wheely.tscn","fight",current_pos) #round player pos to whole number])
@@ -267,6 +284,27 @@ func _on_fight_printer_body_entered(body):
 	if body.get_name() == "playercharacter":
 		current_path_to_move = []
 		GlobalUtil.disable_movement = true
+		await get_tree().create_timer(0.4).timeout
+		$"../PrinterGoesHere/Label".text = "Beep."
+		await get_tree().create_timer(2).timeout
+		$"../PrinterGoesHere/Label".text = "Sorry, there is no paper."
+		await get_tree().create_timer(0.8).timeout
+		$"../PrinterGoesHere/Label".text = "Sorry, there is no toner."
+		await get_tree().create_timer(0.6).timeout
+		$"../PrinterGoesHere/Label".text = "Sorry, the printer is jammed."
+		await get_tree().create_timer(0.4).timeout
+		
+		for beansbeans in range(12):
+			$"../PrinterGoesHere/Label".text = "Sorry, there is no paper."
+			await get_tree().create_timer(0.05).timeout
+			$"../PrinterGoesHere/Label".text = "Sorry, there is no toner."
+			await get_tree().create_timer(0.05).timeout
+			$"../PrinterGoesHere/Label".text = "Sorry, the printer is jammed."
+			await get_tree().create_timer(0.05).timeout
+		await get_tree().create_timer(2).timeout
+		$"../PrinterGoesHere".visible = false
+		$"../PrinterJacked".visible = true
+		await get_tree().create_timer(1).timeout
 		var pos = [int(roundf(global_position.x/16 - 0.5)), int(roundf(global_position.y - 0.5)/16)]
 	#print(SceneTransition.transition_conditions["reception"][[8,0]][0])
 		SceneTransition.change_scene("Printer.tscn","fight",current_pos) #round player pos to whole number])

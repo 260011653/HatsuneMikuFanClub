@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bqrbvma6mb672"]
+[gd_scene load_steps=11 format=3 uid="uid://bqrbvma6mb672"]
 
 [ext_resource type="Script" path="res://Scripts/reception.gd" id="1_83182"]
 [ext_resource type="Script" path="res://Scripts/sceneloader.gd" id="1_b7x1o"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://qe3wjokbcblt" path="res://Art/printer_asleep.png" id="3_t3ca1"]
 [ext_resource type="PackedScene" uid="uid://ce2b4mv8y2x08" path="res://Scenes/playercharacter.tscn" id="4_8dt04"]
 [ext_resource type="AudioStream" uid="uid://b4jekbqchxlgy" path="res://Music/floor2_theme.mp3" id="7_10qom"]
+[ext_resource type="Texture2D" uid="uid://ju7yc7fns3lr" path="res://Art/printer_awake.png" id="8_dvrpf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a2lq4"]
 size = Vector2(64, 12)
@@ -52,6 +53,19 @@ position = Vector2(313, 42)
 scale = Vector2(0.907608, 0.907608)
 texture = ExtResource("3_t3ca1")
 
+[node name="Label" type="Label" parent="PrinterGoesHere"]
+offset_left = -24.2395
+offset_top = -31.9521
+offset_right = 155.76
+offset_bottom = 17.0479
+scale = Vector2(0.3, 0.3)
+uppercase = true
+
+[node name="PrinterJacked" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(313, 34)
+texture = ExtResource("8_dvrpf")
+
 [node name="playercharacter" parent="." instance=ExtResource("4_8dt04")]
 position = Vector2(264, 17)
 scale = Vector2(0.907608, 0.907608)
@@ -72,6 +86,8 @@ shape = SubResource("RectangleShape2D_lmpgt")
 stream = ExtResource("7_10qom")
 volume_db = -20.0
 autoplay = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
 
 [connection signal="body_entered" from="Area2D" to="playercharacter" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="playercharacter" method="_on_area_2d_body_exited"]

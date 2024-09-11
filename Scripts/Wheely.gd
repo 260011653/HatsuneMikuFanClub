@@ -57,7 +57,7 @@ func EnemAttack():
 				$ELog.text = "Wheely Bag Kid\nattacks dealing \n"+str(damage)+" damage"
 				Student.Damage(damage)
 			5:
-				var Heal = rng.randi_range(30,75)
+				var Heal = rng.randi_range(50,75)
 				if RHealth+Heal >= Max:
 					Heal = Max-RHealth
 					RHealth = Max
@@ -68,7 +68,7 @@ func EnemAttack():
 		$Magic.show()
 
 func _on_attack_pressed():
-	if Student.Get_Health() > 0:
+	if Student.Get_Health() >0:
 		$Attack.hide()
 		$Magic.hide()
 		var damage = Student.Attack()
@@ -78,7 +78,7 @@ func _on_attack_pressed():
 
 
 func _on_magic_pressed():
-	if Student.Get_Health() > 0:
+	if Student.Get_Health() >0:
 		$Magic.hide()
 		$Attack.hide()
 		$Heal.show()
